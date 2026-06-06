@@ -86,32 +86,38 @@ a:hover { color: #6aafe9; }
     background: linear-gradient(135deg, #0f1a2e 0%, #142842 100%);
     border: 1px solid #1a3050; border-radius: 14px; padding: 24px; margin-bottom: 24px;
 }
-.featured-header {
-    display: flex; align-items: center; gap: 14px; margin-bottom: 18px;
+.featured-heading {
+    font-size: 18px; color: #e8edf5; font-weight: 700; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
 }
-.featured-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: rgba(74,144,217,0.15); border: 1px solid rgba(74,144,217,0.3);
-    display: flex; align-items: center; justify-content: center; font-size: 24px;
-    flex-shrink: 0;
+.featured-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
 }
-.featured-header h2 { font-size: 20px; color: #e8edf5; font-weight: 700; }
-.featured-header h2 span { color: #4a90d9; }
-.featured-header p { color: #607090; font-size: 13px; margin-top: 2px; }
-.featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
 .featured-card {
-    padding: 20px; border-radius: 10px; border: 1px solid #1a3050;
-    transition: all 0.25s; display: block; position: relative;
+    display: flex; flex-direction: column; border-radius: 12px;
+    border: 1px solid #1a3050; overflow: hidden;
+    transition: all 0.25s; background: #0b1424;
 }
 .featured-card:hover { border-color: #4a90d9; transform: translateY(-2px);
                        box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-.featured-card-badge {
-    display: inline-block; padding: 2px 10px; border-radius: 10px;
-    background: rgba(74,144,217,0.15); color: #4a90d9;
-    font-size: 11px; font-weight: 600; margin-bottom: 10px;
+.featured-cover {
+    width: 100%; height: 160px; overflow: hidden; position: relative;
+    display: flex; align-items: center; justify-content: center;
 }
-.featured-card h3 { font-size: 15px; color: #d0d8e8; font-weight: 600; line-height: 1.4; margin-bottom: 10px; }
-.featured-card-meta { display: flex; gap: 14px; font-size: 12px; color: #607090; }
+.featured-cover img { width: 100%; height: 100%; object-fit: cover; }
+.featured-body { padding: 16px 18px; flex: 1; display: flex;
+                 flex-direction: column; }
+.featured-body .cat-tag {
+    font-size: 10px; padding: 2px 10px; border-radius: 10px;
+    background: #1a3050; color: #4a90d9; font-weight: 500;
+    display: inline-block; width: fit-content; margin-bottom: 8px;
+}
+.featured-body h3 { font-size: 15px; color: #d0d8e8; font-weight: 600;
+                     line-height: 1.4; margin-bottom: 8px; }
+.featured-body h3:hover { color: #4a90d9; }
+.featured-body p { font-size: 12px; color: #607090; line-height: 1.5;
+                    flex: 1; margin-bottom: 10px; }
+.featured-body .meta { font-size: 11px; color: #506080; display: flex; gap: 12px; }
 
 /* Category pills */
 .cat-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }

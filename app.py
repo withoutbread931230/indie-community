@@ -419,6 +419,634 @@ SEED_POSTS = [
         'cover_url': 'https://picsum.photos/seed/cs2-walkable/800/400',
         'days_ago': 8,
     },
+    {
+        'title': 'CS2 Road Building Tricks — Advanced Techniques',
+        'content': (
+            'Take your road network to the next level with these advanced techniques.'
+            ''
+            '## Stacked Interchanges'
+            'For maximum throughput, build multi-level interchanges. Use elevated roads and tunnels to separate traffic flows:'
+            '- Stack interchanges save space in dense downtown areas'
+            '- Use the Elevated Road tool to create ramps above surface streets'
+            '- Tunnels preserve surface-level pedestrian access'
+            ''
+            '## Merging and Diverging'
+            'When merging traffic, use longer merge lanes. Short merges create bottlenecks. A good merge lane is 8-12 cells long.'
+            ''
+            '## Grade-Separated Intersections'
+            'Eliminate intersections entirely using bridges and tunnels. Highways should have zero intersections.'
+            ''
+            '## One-Way Couplet Streets'
+            'Pair two one-way streets running opposite directions. This doubles throughput vs two-way streets.'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'RoadEngineer',
+        'cover_url': 'https://picsum.photos/seed/cs2-roaden1/800/400',
+        'days_ago': 1,
+    },
+    {
+        'title': 'How to Make Money Fast — Early Game Economy',
+        'content': (
+            'Struggling with debt early game? Here are proven strategies.'
+            ''
+            '## The First 30 Minutes'
+            '- Take the maximum starting loan'
+            '- Set all service budgets to 50% immediately'
+            '- Zone only residential + a tiny bit of commercial'
+            "- Don't build schools until population > 1,000"
+            ''
+            '## Tax Tweaks'
+            '- Keep residential at 8% to attract families'
+            '- Raise industrial to 11%'
+            '- Commercial at 9% is the sweet spot'
+            ''
+            '## Industry Advantage'
+            'Zone industry near highway access. Specialize in available natural resources for bonus income.'
+            ''
+            '## When to Expand'
+            'Only expand when budget has been positive for 5+ consecutive months and you have 20%+ spare capacity.'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'MoneyMaker',
+        'cover_url': 'https://picsum.photos/seed/cs2-moneym2/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Roundabout Design Guide — Every Pattern Explained',
+        'content': (
+            'Roundabouts are the single most effective traffic solution in CS2.'
+            ''
+            '## Basic Roundabout (2-Lane)'
+            'Perfect for residential-collector intersections:'
+            '- 3-4 cell radius with 2-lane roads'
+            '- Works up to 1,000 vehicles per hour'
+            ''
+            '## Medium Roundabout (4-Lane)'
+            'For collector-arterial intersections:'
+            '- 5-6 cell radius with 4-lane roads'
+            '- Add dedicated slip lanes for right turns'
+            '- Handles 2,000-4,000 vehicles per hour'
+            ''
+            '## Large Turbo Roundabout'
+            'For arterial-highway connections:'
+            '- Multi-lane with spiral markings'
+            '- Use one-way roads for circulatory lanes'
+            '- Handles 6,000+ vehicles per hour'
+            ''
+            'Never place buildings too close to a roundabout entrance — vehicles slow and get blocked.'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'RoundaboutPro',
+        'cover_url': 'https://picsum.photos/seed/cs2-rounda3/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Dealing with Death Waves — A Complete Guide',
+        'content': (
+            'Death waves are one of the most frustrating mechanics in CS2.'
+            ''
+            '## What Causes Death Waves?'
+            'Zoning large residential areas at once makes all residents the same age. They die simultaneously ~60 years later.'
+            ''
+            '## Prevention'
+            '- Zone residential in small batches (500-1,000 units at a time)'
+            '- Space out zoning by a few in-game months'
+            '- Mix high, medium, and low density to stagger ages'
+            ''
+            '## During a Wave'
+            '- Increase healthcare budget to 120%'
+            '- Build additional medical clinics'
+            '- Add extra crematoriums'
+            '- Wave passes after about 6 in-game months'
+            ''
+            'A city growing 500 residents per month will never experience death waves.'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'HealthyCity',
+        'cover_url': 'https://picsum.photos/seed/cs2-health1/800/400',
+        'days_ago': 1,
+    },
+    {
+        'title': 'How to Build a Perfect Downtown',
+        'content': (
+            'A great downtown is the heart of any city.'
+            ''
+            '## The Downtown Grid'
+            '- Use 6x12 or 8x16 cell blocks for optimal building sizes'
+            '- Main streets every 4 blocks should be 4-lane or 6-lane'
+            '- Side streets can be 2-lane one-way'
+            ''
+            '## Mixed-Use Core'
+            '- Ground floor commercial, upper floor residential/office'
+            '- Scatter small parks between buildings'
+            '- Place signature buildings as landmarks'
+            ''
+            '## Transit Integration'
+            '- Metro station every 8-10 blocks'
+            '- Bus stops every 2-3 blocks'
+            '- Central transit hub near city hall'
+            ''
+            '## Density Transition'
+            'Highest density at center, gradually decreasing outward.'
+        ),
+        'category': 'City Planning',
+        'username': 'DowntownDev',
+        'cover_url': 'https://picsum.photos/seed/cs2-downto5/800/400',
+        'days_ago': 5,
+    },
+    {
+        'title': 'Suburban Planning Guide — Realistic Neighborhoods',
+        'content': (
+            'Build beautiful, functional suburbs.'
+            ''
+            '## Cul-de-Sac Design'
+            '- Branch cul-de-sacs off collector roads'
+            '- Keep each cul-de-sac to 8-12 houses'
+            '- Connect them with pedestrian paths'
+            ''
+            '## School Placement'
+            'Elementary schools within walking distance (8-10 blocks) of every residential area.'
+            ''
+            '## Parks and Green Spaces'
+            '- Small playground every 4-5 blocks'
+            '- Medium park per district'
+            '- Large nature reserve on the outskirts'
+            ''
+            '## The Commuter Problem'
+            'Suburbs generate commuters. Ensure good road connections to downtown. Build a commuter train station.'
+        ),
+        'category': 'City Planning',
+        'username': 'SuburbKing',
+        'cover_url': 'https://picsum.photos/seed/cs2-suburb4/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'Disaster Management — Prepare for the Worst',
+        'content': (
+            "CS2 can throw disasters at your city. Here's how to prepare."
+            ''
+            '## Early Warning'
+            '- Build Emergency Broadcast Center as soon as available'
+            '- Place disaster warning systems in every district'
+            '- Plan evacuation routes to open areas'
+            ''
+            '## Fire and Rescue'
+            '- Helicopter depots cover large areas quickly'
+            '- Place fire stations in high-value districts'
+            '- Maintain 80%+ coverage of all buildings'
+            ''
+            '## Post-Disaster Recovery'
+            '- Keep extra budget in reserve for repairs'
+            '- Road maintenance depots speed up repairs'
+            '- Rebuild damaged parks and services first'
+            ''
+            'A prepared city recovers in days. An unprepared one takes months.'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'SafetyFirst',
+        'cover_url': 'https://picsum.photos/seed/cs2-safety6/800/400',
+        'days_ago': 6,
+    },
+    {
+        'title': 'How to Build Highways That Actually Work',
+        'content': (
+            'Highways are the backbone of your regional transport. Get them right.'
+            ''
+            '## Proper Interchange Spacing'
+            'Leave at least 60 cells between full-size highway interchanges. Too-close exits create weaving problems.'
+            ''
+            '## Highway Exit Design'
+            '- Use longer deceleration lanes (12+ cells)'
+            '- Never have exits on the left side'
+            '- Stack interchanges save space in dense areas'
+            ''
+            '## The Diamond Interchange'
+            'The most reliable design: 4 ramps, diamond pattern. Cheap and easy to upgrade.'
+            ''
+            '## Avoiding Highway Gridlock'
+            'Never let local streets connect directly to highways — always use interchanges.'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'HighwayHero',
+        'cover_url': 'https://picsum.photos/seed/cs2-highwa2/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Landscaping Guide — Make Your City Beautiful',
+        'content': (
+            'The best CS2 cities are beautiful as well as functional.'
+            ''
+            '## Terrain Sculpting'
+            '- Create hills, valleys, and waterfronts'
+            '- Avoid flattening everything — natural terrain looks better'
+            '- Create retaining walls on steep slopes'
+            ''
+            '## Tree Placement'
+            '- Trees reduce noise and air pollution'
+            '- Line major roads with trees for visual appeal'
+            '- Create forested areas in parks and green belts'
+            ''
+            '## Water Features'
+            '- Canals add charm to downtown areas'
+            '- Waterfront promenades increase property values'
+            '- Ponds create natural park centers'
+            ''
+            '## Lighting'
+            'Good lighting makes nighttime cities magical.'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'GardenCity',
+        'cover_url': 'https://picsum.photos/seed/cs2-garden7/800/400',
+        'days_ago': 7,
+    },
+    {
+        'title': 'Office Zone Strategy — Build a Tech Economy',
+        'content': (
+            'Office zones are the key to a wealthy, low-pollution city.'
+            ''
+            '## Why Offices Matter'
+            '- High tax revenue with minimal services'
+            '- Zero pollution'
+            '- Fewer traffic trips than industry'
+            ''
+            '## The Education Pipeline'
+            '- Elementary schools in every residential area'
+            '- High schools per 5,000 population'
+            '- Universities before 20,000 population'
+            ''
+            '## IT Cluster Specialization'
+            'Transforms offices into tech hubs. Requires graduates. Boosts tax income by 25%.'
+            ''
+            '## Placement Tips'
+            'Place offices between residential and industrial as a buffer zone.'
+        ),
+        'category': 'City Planning',
+        'username': 'TechBro',
+        'cover_url': 'https://picsum.photos/seed/cs2-techbr3/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Park Life — Every Park Type Explained',
+        'content': (
+            "Parks aren't just decoration — they're essential infrastructure."
+            ''
+            '## Small Parks'
+            '- Gardens, playgrounds, small plazas'
+            '- Place every 4-5 blocks in residential areas'
+            '- Boost land value in a small radius'
+            ''
+            '## Medium Parks'
+            '- Dog parks, sports fields, botanical gardens'
+            '- One per district is a good rule'
+            '- Attract visitors from nearby commercial'
+            ''
+            '## Large Parks'
+            '- Nature reserves, amusement parks, zoos'
+            '- Major tourist attractions'
+            '- City-wide happiness boost'
+            ''
+            'A well-parked city has 15-20% higher land values.'
+        ),
+        'category': 'City Planning',
+        'username': 'ParkRanger',
+        'cover_url': 'https://picsum.photos/seed/cs2-parkra5/800/400',
+        'days_ago': 5,
+    },
+    {
+        'title': 'Noise Pollution Solutions — Quiet City Guide',
+        'content': (
+            'Noise pollution is one of the most overlooked issues in CS2.'
+            ''
+            '## Sources of Noise'
+            '- Roads (especially highways and 6-lane roads)'
+            '- Commercial zones (especially at night)'
+            '- Industrial areas'
+            '- Airports and train stations'
+            ''
+            '## Mitigation Strategies'
+            '- Use trees along roads — they absorb noise'
+            '- Create office buffer zones'
+            '- Ban heavy traffic in residential districts'
+            '- Use sound barriers along highways'
+            ''
+            '## Quiet Zone District Policy'
+            'Create quiet districts. Citizens pay higher taxes for peace.'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'PeacefulCity',
+        'cover_url': 'https://picsum.photos/seed/cs2-peacef4/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'How to Use District Policies Like a Pro',
+        'content': (
+            'District policies are powerful tools that many players ignore.'
+            ''
+            '## Must-Use Policies'
+            '- Heavy Traffic Ban: Removes trucks from residential areas'
+            '- Old Town: Stops new buildings, preserves historic areas'
+            '- Free Public Transport: Boosts transit usage by 300%'
+            '- Recycling: Reduces garbage output by 50%'
+            ''
+            '## Revenue Policies'
+            '- Big Business Benefactor: Commercial pays extra'
+            '- Tourist District: Hotels get bonus income'
+            '- High-Tech Zone: Office tax bonus'
+            ''
+            '## Social Policies'
+            '- Smoking Ban: Healthier citizens, fewer medical visits'
+            '- Sports and Health: Citizens live longer'
+            '- Night Vibe: Entertainment districts thrive at night'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'PolicyWonk',
+        'cover_url': 'https://picsum.photos/seed/cs2-policy2/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Education System Guide — From K to University',
+        'content': (
+            'Education is the key to a prosperous city.'
+            ''
+            '## The Education Chain'
+            '- Elementary: 1 per 2,000 population'
+            '- High school: 1 per 8,000 population'
+            '- University: 1 per 20,000 population'
+            ''
+            '## Education Benefits'
+            '- Educated workers = more offices, less industry'
+            '- Higher education = higher tax revenue'
+            '- Reduces crime, improves healthcare'
+            ''
+            '## University Specializations'
+            '- Business School: Boosts commercial tax'
+            '- Engineering School: Improves industrial efficiency'
+            '- Medical School: City-wide healthcare boost'
+            '- Law School: Reduces crime rates'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'Professor',
+        'cover_url': 'https://picsum.photos/seed/cs2-profes2/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Healthcare Guide — Keep Citizens Healthy',
+        'content': (
+            'A healthy city is a happy city.'
+            ''
+            '## Healthcare Facilities'
+            '- Medical Clinic: Handles up to 3,000 people'
+            '- Hospital: Handles up to 15,000 people'
+            '- Crematorium: Essential for death management'
+            ''
+            '## Coverage Planning'
+            'Clinics every 15-20 blocks. Use info view to spot gaps.'
+            ''
+            '## Pollution and Health'
+            'Citizens near industry or busy roads get sick. Plant trees to reduce illness.'
+            ''
+            '## Ambulance Management'
+            'Good roads save lives. Ensure stations access arterial roads.'
+            ''
+            "Don't overbuild — match capacity to population."
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'DocBrown',
+        'cover_url': 'https://picsum.photos/seed/cs2-docbro3/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'The Complete Industry Guide',
+        'content': (
+            'Industry is the engine of your economy.'
+            ''
+            '## Generic Industry'
+            'Start here. Zone with highway access, buffer from residential.'
+            ''
+            '## Specialized Industry'
+            '- Farming: Low pollution, needs fertile land'
+            '- Forestry: Medium income, needs forests'
+            '- Oil: High income, high pollution'
+            '- Ore: High income, high pollution'
+            ''
+            '## Office Upgrades'
+            'Educated citizens upgrade industry to offices. Build schools.'
+            ''
+            '## Cargo Transport'
+            'Build cargo train stations near industry to reduce truck traffic.'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'FactoryKing',
+        'cover_url': 'https://picsum.photos/seed/cs2-factor4/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'Bridge and Tunnel Design',
+        'content': (
+            'Bridges and tunnels are essential for difficult terrain.'
+            ''
+            '## Bridge Types'
+            '- Flat: Cheapest, short spans'
+            '- Arch: Medium, longer spans'
+            '- Suspension: Expensive, very wide gaps'
+            ''
+            '## Tunnel Best Practices'
+            '- Preserve surface aesthetics'
+            '- More expensive but space-saving'
+            '- Pedestrian tunnels connect districts safely'
+            ''
+            '## Height Management'
+            'Use Page Up/Down before placing for precision.'
+            ''
+            'Make them beautiful — add lighting and parks at entrances.'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'BridgeBuilder',
+        'cover_url': 'https://picsum.photos/seed/cs2-bridge5/800/400',
+        'days_ago': 5,
+    },
+    {
+        'title': 'Tourism Guide — Attract Visitors',
+        'content': (
+            'Tourism is a powerful revenue source.'
+            ''
+            '## Tourist Attractions'
+            '- Signature buildings (Space Elevator, Opera House)'
+            '- Natural wonders and parks'
+            '- Entertainment districts with nightlife'
+            ''
+            '## Tourist Transport'
+            'Tourists arrive via trains, airports, harbors, and highways.'
+            ''
+            '## Tourism Infrastructure'
+            '- Hotels near attractions'
+            '- Public transport for visitors'
+            '- Parks and plazas as gathering spots'
+            ''
+            '## Tourism District Policy'
+            'Enable in hotel areas for bonus income.'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'TravelGuide',
+        'cover_url': 'https://picsum.photos/seed/cs2-travel2/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Waterfront Development Guide',
+        'content': (
+            'Waterfront property is the most valuable real estate.'
+            ''
+            '## Quays and Canals'
+            '- Define edges with quays'
+            '- Canals add charm and increase land values'
+            '- Pedestrian bridges create photo-worthy spots'
+            ''
+            '## Beach Development'
+            '- Beaches attract tourists and residents'
+            '- Build promenades with shops'
+            '- Add volleyball courts and playgrounds'
+            ''
+            '## Flood Management'
+            'Check flood maps before building. Use flood walls.'
+        ),
+        'category': 'City Planning',
+        'username': 'CoastalDev',
+        'cover_url': 'https://picsum.photos/seed/cs2-coasta6/800/400',
+        'days_ago': 6,
+    },
+    {
+        'title': 'Performance Optimization — Smooth CS2',
+        'content': (
+            'Large cities can bring powerful PCs to their knees.'
+            ''
+            '## Graphics Settings'
+            '- Lower shadow quality (biggest impact)'
+            '- Reduce LOD distance'
+            '- Disable ambient occlusion'
+            ''
+            '## Mod Performance'
+            '- Loading Screen Mod reduces RAM'
+            '- FPS Booster disables unnecessary rendering'
+            ''
+            '## City Design for Performance'
+            '- Fewer unique buildings = better FPS'
+            '- Reduce tree count in dense areas'
+            '- Keep population under 200k for smooth gameplay'
+            ''
+            '- Restart every 2-3 hours'
+            '- Clear asset cache periodically'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'Optimizer',
+        'cover_url': 'https://picsum.photos/seed/cs2-optimi3/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Fixing Common CS2 Bugs',
+        'content': (
+            "CS2 has its share of bugs. Here's how to fix them."
+            ''
+            '## No Pedestrian Access'
+            '- Check pedestrian path connections'
+            '- Ensure crosswalks across busy roads'
+            ''
+            '## High Rent / No Customers'
+            '- Balance land values with zone types'
+            '- Use the Renter and Land Value Policy mod'
+            ''
+            '## General Fixes'
+            '- Verify game files on Steam'
+            '- Clear asset cache'
+            '- Remove recently added mods'
+            '- Update graphics drivers'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'BugFixer',
+        'cover_url': 'https://picsum.photos/seed/cs2-bugfix2/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Night City — Urban Design After Dark',
+        'content': (
+            'Night mode changes gameplay. Build for the dark.'
+            ''
+            '## Lighting Strategy'
+            '- Street lights for pedestrian safety'
+            '- Parks need lighting to stay open'
+            '- Commercial benefits from decorative lighting'
+            ''
+            '## Night Economy'
+            '- Entertainment districts thrive at night'
+            '- Night bus routes serve shift workers'
+            ''
+            '## Crime Management'
+            'Crime increases at night. More police coverage needed.'
+            ''
+            '## Night Tourism'
+            'Build entertainment districts, night markets, observation decks.'
+        ),
+        'category': 'City Planning',
+        'username': 'NightOwl',
+        'cover_url': 'https://picsum.photos/seed/cs2-nighto4/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'Mod Installation Guide — Get Started with Mods',
+        'content': (
+            "New to modding? Here's how to install mods safely."
+            ''
+            '## Where to Get Mods'
+            '- Paradox Mods: Official, integrated'
+            '- Thunderstore: Community-driven, easy installer'
+            '- Steam Workshop: For CS1 only'
+            ''
+            '## Installation Steps'
+            '- Download via Paradox Mods launcher'
+            '- Enable mods before loading your save'
+            '- Check compatibility in the mod description'
+            ''
+            '## Safety Tips'
+            '- Backup saves before installing'
+            '- Install one mod at a time'
+            '- Read comments for known issues'
+            '- Remove unused mods to prevent conflicts'
+            ''
+            'Start small. Add mods as you need them.'
+        ),
+        'category': 'Mods & Modding',
+        'username': 'ModMaster',
+        'cover_url': 'https://picsum.photos/seed/cs2-modmas1/800/400',
+        'days_ago': 1,
+    },
+    {
+        'title': 'Map Review — Best Maps Compared',
+        'content': (
+            "Can't pick a map? Here's how each type plays."
+            ''
+            '## Temperate (Best for Beginners)'
+            '- Windy Fjords: Balanced, flat terrain'
+            '- Great Highlands: Mix of flat and hills'
+            ''
+            '## Coastal Maps'
+            '- Azure Gulf: Beautiful coastline'
+            '- Coral Islands: Archipelago, needs bridges'
+            ''
+            '## Mountain (Advanced)'
+            '- Alpine Valley: Steep, terraced building'
+            '- Snowy Peaks: Winter, heating critical'
+            ''
+            '## River Maps'
+            '- Delta Plains: Multiple river branches'
+            '- Meander River: Natural city division'
+            ''
+            '## Pro Tip'
+            'Check resource overlay before placing first road.'
+        ),
+        'category': 'Getting Started',
+        'username': 'MapExplorer',
+        'cover_url': 'https://picsum.photos/seed/cs2-mapexp6/800/400',
+        'days_ago': 6,
+    },
 ]
 
 
@@ -523,48 +1151,36 @@ def init_db():
         db.commit()
 
 def seed_data():
-    existing = query_db('SELECT COUNT(*) as cnt FROM posts', one=True)
+    existing = query_db('SELECT COUNT(*) as cnt FROM posts')
     if existing and existing['cnt'] > 3:
         first = query_db('SELECT title FROM posts ORDER BY id ASC LIMIT 1', one=True)
-        if first and 'Beginner' in first['title']:
+        if first and 'CS2' in first['title']:
             return
     if existing and existing['cnt'] > 0:
-        if DATABASE_URL:
-            with get_db().cursor() as cur:
-                cur.execute('TRUNCATE TABLE comments CASCADE')
-                cur.execute('TRUNCATE TABLE posts CASCADE')
-                cur.execute('TRUNCATE TABLE users CASCADE')
-        else:
-            query_db('DELETE FROM comments')
-            query_db('DELETE FROM posts')
-            query_db('DELETE FROM users')
+        query_db('DELETE FROM comments')
+        query_db('DELETE FROM posts')
+        query_db('DELETE FROM users')
     from datetime import timedelta
     base_time = datetime.utcnow()
     for i, post in enumerate(SEED_POSTS):
-        try:
+        user = query_db('SELECT id FROM users WHERE username = ?', (post['username'],), one=True)
+        if not user:
+            query_db('INSERT INTO users (username, password, created_at) VALUES (?, ?, ?)',
+                     (post['username'], 'guide123', (base_time - timedelta(days=post['days_ago'] + 1)).isoformat() + 'Z'))
             user = query_db('SELECT id FROM users WHERE username = ?', (post['username'],), one=True)
-            if not user:
-                query_db('INSERT INTO users (username, password, created_at) VALUES (?, ?, ?)',
-                         (post['username'], 'guide123', (base_time - timedelta(days=post['days_ago'] + 1)).isoformat() + 'Z'))
-                user = query_db('SELECT id FROM users WHERE username = ?', (post['username'],), one=True)
-            created = (base_time - timedelta(days=post['days_ago'])).isoformat() + 'Z'
-            query_db(
-                'INSERT INTO posts (title, content, category, cover_url, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)',
-                (post['title'], post['content'], post['category'], post['cover_url'], user['id'], created)
-            )
-        except Exception as e:
-            import sys, traceback
-            print(f'Seed item {i} failed: {post["title"][:40]}... — {e}', file=sys.stderr)
-            traceback.print_exc()
+        created = (base_time - timedelta(days=post['days_ago'])).isoformat() + 'Z'
+        query_db(
+            'INSERT INTO posts (title, content, category, cover_url, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)',
+            (post['title'], post['content'], post['category'], post['cover_url'], user['id'], created)
+        )
 
 with app.app_context():
     init_db()
     try:
         seed_data()
     except Exception as e:
-        import sys, traceback
+        import sys
         print(f'Seed data error (non-fatal): {e}', file=sys.stderr)
-        traceback.print_exc()
 
 def now():
     return datetime.utcnow().isoformat() + 'Z'
@@ -615,12 +1231,6 @@ def index():
                            get_category_icon=get_category_icon,
                            selected_category=category, search=search,
                            top_users=top_users)
-
-@app.route('/dbcheck')
-def dbcheck():
-    posts = query_db('SELECT p.*, u.username FROM posts p JOIN users u ON p.user_id = u.id ORDER BY p.id')
-    users = query_db('SELECT * FROM users')
-    return f'Posts: {len(posts)} — Users: {len(users)} — First post: {posts[0]["title"] if posts else "None"} — Users: {[u["username"] for u in users]}'
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
