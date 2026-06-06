@@ -379,3 +379,11 @@ a:hover { color: #6aafe9; }
 .affiliate-banner-text { color: #8090b0; font-size: 13px; }
 .affiliate-banner-text strong { color: #e8edf5; }
 .affiliate-banner-cta { color: #4a90d9; font-size: 13px; font-weight: 600; }
+
+/* Footer */
+.site-footer {
+    text-align: center; padding: 24px; border-top: 1px solid #1a3050;
+    margin-top: 40px;
+}
+.site-footer a { color: #405070; font-size: 12px; }
+.site-footer a:hover { color: #4a90d9; }

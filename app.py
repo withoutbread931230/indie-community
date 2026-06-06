@@ -1407,6 +1407,10 @@ def ads_txt():
         return f'google.com, {pub}, DIRECT, f08c47fec0942fa0\n', 200, {'Content-Type': 'text/plain'}
     return 'google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0\n', 200, {'Content-Type': 'text/plain'}
 
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080))
     app.run(host='0.0.0.0', port=port, debug=False)
