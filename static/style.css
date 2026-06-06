@@ -28,6 +28,9 @@ a:hover { color: #6aafe9; }
     border-radius: 6px; font-size: 13px; font-weight: 600;
 }
 .nav-links .btn:hover { background: #3a7bc8; }
+.lang-selector { display: flex; gap: 2px; margin-left: 12px; padding-left: 12px; border-left: 1px solid #1a3050; }
+.lang-link { font-size: 11px !important; padding: 2px 5px !important; border-radius: 3px; font-weight: 600 !important; letter-spacing: 0.5px; }
+.lang-link.active { background: #4a90d9; color: #fff !important; }
 .user-info { font-size: 13px; color: #607090; }
 .user-info strong { color: #c8d8f0; }
 

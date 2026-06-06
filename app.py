@@ -1,4 +1,4 @@
-import os
+import os, json
 from datetime import datetime
 from flask import Flask, g, render_template, request, redirect, url_for, session, flash
 
@@ -11,6 +11,27 @@ SQLITE_PATH = os.path.join(os.path.dirname(__file__), 'community.db')
 if DATABASE_URL:
     import psycopg2
     import psycopg2.extras
+
+LANGUAGES = ['en', 'zh', 'de', 'fr', 'ja', 'ko']
+TRANSLATIONS = {}
+
+def load_translations():
+    for lang in LANGUAGES:
+        path = os.path.join(os.path.dirname(__file__), 'translations', f'{lang}.json')
+        if os.path.exists(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                TRANSLATIONS[lang] = json.load(f)
+
+load_translations()
+
+def _(key, lang=None):
+    if lang is None:
+        try:
+            lang = session.get('lang', 'en')
+        except RuntimeError:
+            lang = 'en'
+    trans = TRANSLATIONS.get(lang, TRANSLATIONS.get('en', {}))
+    return trans.get(key, TRANSLATIONS.get('en', {}).get(key, key))
 
 CATEGORIES = [
     'Getting Started', 'City Planning', 'Traffic & Transit',
@@ -1107,9 +1128,11 @@ def init_db():
                     category TEXT NOT NULL,
                     cover_url TEXT DEFAULT '',
                     user_id INTEGER NOT NULL REFERENCES users(id),
-                    created_at TEXT NOT NULL
+                    created_at TEXT NOT NULL,
+                    lang TEXT DEFAULT 'en'
                 )
             ''')
+            cur.execute("ALTER TABLE posts ADD COLUMN IF NOT EXISTS lang TEXT DEFAULT 'en'")
             cur.execute('''
                 CREATE TABLE IF NOT EXISTS comments (
                     id SERIAL PRIMARY KEY,
@@ -1136,6 +1159,7 @@ def init_db():
                 cover_url TEXT DEFAULT '',
                 user_id INTEGER NOT NULL,
                 created_at TEXT NOT NULL,
+                lang TEXT DEFAULT 'en',
                 FOREIGN KEY (user_id) REFERENCES users (id)
             );
             CREATE TABLE IF NOT EXISTS comments (
@@ -1151,7 +1175,7 @@ def init_db():
         db.commit()
 
 def seed_data():
-    existing = query_db('SELECT COUNT(*) as cnt FROM posts')
+    existing = query_db('SELECT COUNT(*) as cnt FROM posts', one=True)
     if existing and existing['cnt'] > 3:
         first = query_db('SELECT title FROM posts ORDER BY id ASC LIMIT 1', one=True)
         if first and 'CS2' in first['title']:
@@ -1169,10 +1193,11 @@ def seed_data():
                      (post['username'], 'guide123', (base_time - timedelta(days=post['days_ago'] + 1)).isoformat() + 'Z'))
             user = query_db('SELECT id FROM users WHERE username = ?', (post['username'],), one=True)
         created = (base_time - timedelta(days=post['days_ago'])).isoformat() + 'Z'
-        query_db(
-            'INSERT INTO posts (title, content, category, cover_url, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)',
-            (post['title'], post['content'], post['category'], post['cover_url'], user['id'], created)
-        )
+        for lang_code in LANGUAGES:
+            query_db(
+                "INSERT INTO posts (title, content, category, cover_url, user_id, created_at, lang) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (post['title'], post['content'], post['category'], post['cover_url'], user['id'], created, lang_code)
+            )
 
 with app.app_context():
     init_db()
@@ -1188,17 +1213,29 @@ def now():
 def get_category_icon(category):
     return CATEGORY_ICONS.get(category, '📋')
 
+@app.context_processor
+def inject_globals():
+    return dict(lang=getattr(g, 'lang', 'en'), _=lambda key: _(key, getattr(g, 'lang', 'en')), LANGUAGES=LANGUAGES)
+
 @app.before_request
 def load_user():
     g.user = None
+    g.lang = session.get('lang', 'en')
     user_id = session.get('user_id')
     if user_id:
         g.user = query_db('SELECT * FROM users WHERE id = ?', (user_id,), one=True)
+
+@app.route('/lang/<code>')
+def set_lang(code):
+    if code in LANGUAGES:
+        session['lang'] = code
+    return redirect(request.referrer or url_for('index'))
 
 @app.route('/')
 def index():
     category = request.args.get('category')
     search = request.args.get('q', '').strip()
+    lang = g.lang
 
     query = '''
         SELECT p.*, u.username,
@@ -1207,6 +1244,9 @@ def index():
     '''
     conditions = []
     params = []
+
+    conditions.append("(p.lang = ? OR p.lang = '' OR p.lang IS NULL)")
+    params.append(lang)
 
     if category:
         conditions.append('p.category = ?')
@@ -1221,16 +1261,23 @@ def index():
     query += ' ORDER BY p.created_at DESC'
 
     posts = query_db(query, params)
+    featured = query_db('''
+        SELECT p.*, u.username,
+               (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) as comment_count
+        FROM posts p JOIN users u ON p.user_id = u.id
+        WHERE p.lang = ?
+        ORDER BY p.created_at DESC LIMIT 4
+    ''', (lang,))
     top_users = query_db('''
         SELECT u.id, u.username, COUNT(p.id) as post_count
         FROM users u LEFT JOIN posts p ON u.id = p.user_id
         GROUP BY u.id ORDER BY post_count DESC LIMIT 5
     ''')
 
-    return render_template('index.html', posts=posts, categories=CATEGORIES,
+    return render_template('index.html', posts=posts, featured=featured, categories=CATEGORIES,
                            get_category_icon=get_category_icon,
                            selected_category=category, search=search,
-                           top_users=top_users)
+                           top_users=top_users, lang=lang, _=_)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -1238,17 +1285,17 @@ def register():
         username = request.form['username'].strip()
         password = request.form['password']
         if not username or not password:
-            flash('Username and password are required.')
+            flash(_('flash.required_fields'))
             return render_template('register.html')
         try:
             query_db('INSERT INTO users (username, password, created_at) VALUES (?, ?, ?)',
                      (username, password, now()))
             user = query_db('SELECT * FROM users WHERE username = ?', (username,), one=True)
             session['user_id'] = user['id']
-            flash('Welcome aboard, gamer!')
+            flash(_('flash.welcome'))
             return redirect(url_for('index'))
         except Exception:
-            flash('Username already taken.')
+            flash(_('flash.register_error'))
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -1260,21 +1307,21 @@ def login():
                         (username, password), one=True)
         if user:
             session['user_id'] = user['id']
-            flash('Welcome back!')
+            flash(_('flash.welcome_back'))
             return redirect(url_for('index'))
-        flash('Invalid username or password.')
+        flash(_('flash.login_error'))
     return render_template('login.html')
 
 @app.route('/logout')
 def logout():
     session.clear()
-    flash('Logged out.')
+    flash(_('flash.logged_out'))
     return redirect(url_for('index'))
 
 @app.route('/new-post', methods=['GET', 'POST'])
 def new_post():
     if not g.user:
-        flash('Please login first.')
+        flash(_('flash.login_first'))
         return redirect(url_for('login'))
     if request.method == 'POST':
         title = request.form['title'].strip()
@@ -1282,11 +1329,11 @@ def new_post():
         category = request.form['category']
         cover_url = request.form.get('cover_url', '').strip()
         if not title or not content:
-            flash('Title and content are required.')
+            flash(_('flash.required_fields'))
             return render_template('new_post.html', categories=CATEGORIES, get_category_icon=get_category_icon)
-        query_db('INSERT INTO posts (title, content, category, cover_url, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)',
-                 (title, content, category, cover_url, g.user['id'], now()))
-        flash('Guide published!')
+        query_db("INSERT INTO posts (title, content, category, cover_url, user_id, created_at, lang) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                 (title, content, category, cover_url, g.user['id'], now(), g.lang))
+        flash(_('flash.post_created'))
         return redirect(url_for('index'))
     return render_template('new_post.html', categories=CATEGORIES, get_category_icon=get_category_icon)
 
@@ -1298,7 +1345,7 @@ def view_post(post_id):
         WHERE p.id = ?
     ''', (post_id,), one=True)
     if not post:
-        flash('Guide not found.')
+        flash(_('flash.post_not_found'))
         return redirect(url_for('index'))
 
     if request.method == 'POST' and g.user:
@@ -1306,7 +1353,7 @@ def view_post(post_id):
         if content:
             query_db('INSERT INTO comments (post_id, user_id, content, created_at) VALUES (?, ?, ?, ?)',
                      (post_id, g.user['id'], content, now()))
-            flash('Comment posted!')
+            flash(_('flash.comment_added'))
             return redirect(url_for('view_post', post_id=post_id))
 
     comments = query_db('''
@@ -1322,7 +1369,7 @@ def view_post(post_id):
 def profile(user_id):
     user = query_db('SELECT * FROM users WHERE id = ?', (user_id,), one=True)
     if not user:
-        flash('User not found.')
+        flash(_('flash.user_not_found'))
         return redirect(url_for('index'))
     posts = query_db('''
         SELECT p.*, (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) as comment_count

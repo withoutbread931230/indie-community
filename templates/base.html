@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,14 +14,19 @@
         <div class="topbar-inner">
             <a href="{{ url_for('index') }}" class="logo">🏙️ CS2 <span>Guide Hub</span></a>
             <div class="nav-links">
-                <a href="{{ url_for('index') }}">Home</a>
-                <a href="{{ url_for('new_post') }}">Write Guide</a>
+                <a href="{{ url_for('index') }}">{{ _('nav.home') }}</a>
+                <a href="{{ url_for('new_post') }}">{{ _('nav.write') }}</a>
                 {% if g.user %}
-                    <span class="user-info"><a href="{{ url_for('profile', user_id=g.user['id']) }}"><strong>{{ g.user['username'] }}</strong></a> | <a href="{{ url_for('logout') }}">Logout</a></span>
+                    <span class="user-info"><a href="{{ url_for('profile', user_id=g.user['id']) }}"><strong>{{ g.user['username'] }}</strong></a> | <a href="{{ url_for('logout') }}">{{ _('nav.logout') }}</a></span>
                 {% else %}
-                    <a href="{{ url_for('login') }}">Login</a>
-                    <a href="{{ url_for('register') }}" class="btn">Sign Up</a>
+                    <a href="{{ url_for('login') }}">{{ _('nav.login') }}</a>
+                    <a href="{{ url_for('register') }}" class="btn">{{ _('nav.register') }}</a>
                 {% endif %}
+                <div class="lang-selector">
+                    {% for code in LANGUAGES %}
+                        <a href="{{ url_for('set_lang', code=code) }}" class="lang-link{% if code == lang %} active{% endif %}">{{ code|upper }}</a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </nav>

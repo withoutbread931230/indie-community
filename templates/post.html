@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{{ post['title'] }} — CS2 Guide Hub{% endblock %}
+{% block title %}{{ post['title'] }} — {{ _('site.name') }}{% endblock %}
 {% block content %}
 
 <article class="post-detail">
@@ -18,7 +18,7 @@
                 <div class="mini-avatar">{{ post['username'][0]|upper }}</div>
                 <div>
                     <strong>{{ post['username'] }}</strong>
-                    <span>Published on {{ post['created_at'][:10] }}</span>
+                    <span>{{ _('post.by') }} {{ post['created_at'][:10] }}</span>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
 </article>
 
 <section class="comments-section">
-    <h2>💬 Comments ({{ comments|length }})</h2>
+    <h2>💬 {{ _('post.comments_title') }} ({{ comments|length }})</h2>
 
     {% for comment in comments %}
         <div class="comment">
@@ -59,18 +59,18 @@
         </div>
     {% else %}
         <div class="empty-state" style="padding:24px;">
-            <p style="color:#607090;font-size:14px;">No comments yet. Share your thoughts!</p>
+            <p style="color:#607090;font-size:14px;">{{ _('post.no_comments') }}</p>
         </div>
     {% endfor %}
 
     {% if g.user %}
         <form class="comment-form" method="POST">
-            <textarea name="content" placeholder="Write a comment..." required></textarea>
-            <button type="submit">Post Comment</button>
+            <textarea name="content" placeholder="{{ _('post.write_comment') }}" required></textarea>
+            <button type="submit">{{ _('post.submit_comment') }}</button>
         </form>
     {% else %}
         <div class="login-prompt">
-            <p><a href="{{ url_for('login') }}">Login</a> to leave a comment.</p>
+            <p><a href="{{ url_for('login') }}">{{ _('nav.login') }}</a> {{ _('post.login_to_comment') }}</p>
         </div>
     {% endif %}
 </section>

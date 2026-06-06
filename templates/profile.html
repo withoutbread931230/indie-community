@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}{{ profile_user['username'] }} — CS2 Guide Hub{% endblock %}
+{% block title %}{{ profile_user['username'] }} — {{ _('site.name') }}{% endblock %}
 {% block content %}
 
 <div class="profile-header">
     <div class="avatar-big">{{ profile_user['username'][0]|upper }}</div>
     <h1>{{ profile_user['username'] }}</h1>
-    <p class="bio">Member since {{ profile_user['created_at'][:10] }} · {{ posts|length }} guides written</p>
+    <p class="bio">{{ _('profile.title') }} {{ profile_user['created_at'][:10] }} · {{ posts|length }} {{ _('profile.guides') }}</p>
 </div>
 
-<h2 style="font-size:16px;color:#8090b0;margin-bottom:14px;">📝 Guides ({{ posts|length }})</h2>
+<h2 style="font-size:16px;color:#8090b0;margin-bottom:14px;">📝 {{ _('nav.guides') }} ({{ posts|length }})</h2>
 
 {% if posts %}
     <div class="post-list">
@@ -24,7 +24,7 @@
                     <a href="{{ url_for('view_post', post_id=post['id']) }}" class="title">{{ post['title'] }}</a>
                     <div class="meta">
                         <span>{{ post['created_at'][:10] }}</span>
-                        <span>{{ post['comment_count'] }} comments</span>
+                        <span>{{ post['comment_count'] }} {{ _('post.comments') }}</span>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
 {% else %}
     <div class="empty-state">
         <div class="emoji">📝</div>
-        <p>No guides written yet.</p>
+        <p>{{ _('profile.no_guides') }}</p>
     </div>
 {% endif %}
 

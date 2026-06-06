@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}Login — CS2 Guide Hub{% endblock %}
+{% block title %}{{ _('form.login_title') }} — {{ _('site.name') }}{% endblock %}
 {% block content %}
 
 <div class="form-card">
-    <h1>👋 Welcome Back</h1>
+    <h1>👋 {{ _('form.login_title') }}</h1>
     <form method="POST">
         <div class="form-group">
-            <label>Username</label>
+            <label>{{ _('form.username') }}</label>
             <input type="text" name="username" required>
         </div>
         <div class="form-group">
-            <label>Password</label>
+            <label>{{ _('form.password') }}</label>
             <input type="password" name="password" required>
         </div>
-        <button type="submit" class="submit-btn">Login</button>
+        <button type="submit" class="submit-btn">{{ _('form.login_title') }}</button>
     </form>
     <div class="form-footer">
-        Don't have an account? <a href="{{ url_for('register') }}">Sign up</a>
+        {{ _('form.register_prompt') }} <a href="{{ url_for('register') }}">{{ _('form.register_link') }}</a>
     </div>
 </div>
 
