@@ -526,12 +526,18 @@ def seed_data():
     existing = query_db('SELECT COUNT(*) as cnt FROM posts')
     if existing and existing['cnt'] > 3:
         first = query_db('SELECT title FROM posts ORDER BY id ASC LIMIT 1', one=True)
-        if first and 'CS2' in first['title']:
+        if first and 'Beginner' in first['title'] and 'CS2' in first.get('content', ''):
             return
     if existing and existing['cnt'] > 0:
-        query_db('DELETE FROM comments')
-        query_db('DELETE FROM posts')
-        query_db('DELETE FROM users')
+        if DATABASE_URL:
+            with get_db().cursor() as cur:
+                cur.execute('TRUNCATE TABLE comments CASCADE')
+                cur.execute('TRUNCATE TABLE posts CASCADE')
+                cur.execute('TRUNCATE TABLE users CASCADE')
+        else:
+            query_db('DELETE FROM comments')
+            query_db('DELETE FROM posts')
+            query_db('DELETE FROM users')
     from datetime import timedelta
     base_time = datetime.utcnow()
     for i, post in enumerate(SEED_POSTS):
