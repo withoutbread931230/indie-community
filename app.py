@@ -56,6 +56,9 @@ def init_db():
     ''')
     db.commit()
 
+with app.app_context():
+    init_db()
+
 def now():
     return datetime.utcnow().isoformat() + 'Z'
 
@@ -211,7 +214,5 @@ def profile(user_id):
     return render_template('profile.html', profile_user=user, posts=posts)
 
 if __name__ == '__main__':
-    with app.app_context():
-        init_db()
     port = int(os.environ.get('PORT', 8080))
     app.run(host='0.0.0.0', port=port, debug=False)
