@@ -12,11 +12,13 @@
     </form>
 </div>
 
-<div class="cat-pills">
-    <a href="{{ url_for('index') }}" class="cat-pill {% if not selected_category %}active{% endif %}">{{ _('categories.all') }}</a>
-    {% for cat in categories %}
-        <a href="{{ url_for('index', category=cat) }}" class="cat-pill {% if selected_category == cat %}active{% endif %}">{{ get_category_icon(cat) }} {{ cat }}</a>
-    {% endfor %}
+<div class="cat-dropdown">
+    <select onchange="if(this.value) window.location=this.value" class="cat-select">
+        <option value="{{ url_for('index', q=search) }}" {% if not selected_category %}selected{% endif %}>{{ _('categories.all') }}</option>
+        {% for cat in categories %}
+        <option value="{{ url_for('index', category=cat, q=search) }}" {% if selected_category == cat %}selected{% endif %}>{{ get_category_icon(cat) }} {{ cat }}</option>
+        {% endfor %}
+    </select>
 </div>
 
 {% if featured and not selected_category and not search %}

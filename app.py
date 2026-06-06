@@ -1089,6 +1089,543 @@ SEED_POSTS = [
         'cover_url': 'https://picsum.photos/seed/cs2-mapexp6/800/400',
         'days_ago': 6,
     },
+    # === 20 additional posts to grow community ===
+    {
+        'title': 'CS2 Tips for Complete Beginners — Avoiding Common Mistakes',
+        'content': (
+            'Starting CS2 and feeling lost? Here are the biggest beginner mistakes and how to avoid them.'
+            ''
+            '## Mistake #1: Zoning Too Much Too Fast'
+            'Low density demand? Zone small chunks at a time — 4x4 blocks max. Large zones create death waves.'
+            ''
+            '## Mistake #2: Ignoring Traffic Early'
+            'Place roads with hierarchy from the start. Small roads connect to medium, medium to large arteries.'
+            ''
+            '## Mistake #3: Overbuilding Services'
+            'One clinic, one fire station, one police station is enough for the first 5000 citizens.'
+            ''
+            '## Mistake #4: No Industry Balance'
+            'Zone some industry even if it\'s ugly. Without jobs, your commercial zones won\'t function.'
+            ''
+            '## Mistake #5: Forgetting Exports'
+            'Build cargo train or harbor once industry is established — 80% of goods need to leave the city.'
+        ),
+        'category': 'Getting Started',
+        'username': 'NoobHelper',
+        'cover_url': 'https://picsum.photos/seed/cs2-noob1/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'CS2 Performance Optimization — 60 FPS on Any PC',
+        'content': (
+            'Get smooth performance in Cities: Skylines 2 with these settings and tweaks.'
+            ''
+            '## Critical Settings'
+            '- Turn Volumetrics to Low (biggest FPS gain)'
+            '- Shadow Quality: Medium'
+            '- Reflections: Off (barely noticeable)'
+            '- Fog Quality: Low'
+            ''
+            '## Resolution Scaling'
+            'Set to 80-90% for 40% more FPS with minimal visual loss.'
+            ''
+            '## Mods That Help Performance'
+            '- FPS Booster (removes unnecessary effects)'
+            '- LOD Toggler (reduces detail at distance)'
+            '- Render It! (optimized lighting)'
+            ''
+            '## Hardware Tips'
+            'CS2 is CPU-heavy. Lower population simulation speed if your CPU struggles.'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'PeakEfficiency',
+        'cover_url': 'https://picsum.photos/seed/cs2-perf1/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Metro Systems That Actually Move People',
+        'content': (
+            'Build a metro network that citizens actually use instead of driving.'
+            ''
+            '## Line Planning'
+            'Metro lines should follow your busiest bus routes. Replace overcrowded bus lines one by one.'
+            ''
+            '## Station Spacing'
+            'Place stations 20-30 blocks apart. Too close and buses do the job better. Too far and nobody walks.'
+            ''
+            '## Interchange Design'
+            'Build central stations where 2-3 metro lines cross. Add bus and tram stops at every metro station.'
+            ''
+            '## Deep vs Elevated'
+            'Elevated metro is cheaper but noisy. Deep tunnels are expensive but don\'t affect land value.'
+            ''
+            '## Capacity Planning'
+            'Start with 50-car trains. Watch station usage — if any station hits 80%, upgrade to 100 cars.'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'MetroMaster',
+        'cover_url': 'https://picsum.photos/seed/cs2-metro1/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Building a Walkable City — Car-Free Zones That Work',
+        'content': (
+            'Design districts where walking and cycling are the primary transport modes.'
+            ''
+            '## Pedestrian Streets'
+            'Use the pedestrian street policy in city centers. Delivery vehicles still get access in early morning.'
+            ''
+            '## Bike Lane Network'
+            'Dedicated bike lanes on every arterial road. Connect bike paths through parks.'
+            ''
+            '## Mixed-Use Zoning'
+            'Place commercial zones on ground floor, residential above. Everything within 10-minute walk.'
+            ''
+            '## Traffic Calming'
+            'Use speed bumps, narrow roads, and roundabouts in residential areas. 30 km/h zones everywhere.'
+            ''
+            '## Results'
+            'A walkable city has 60% fewer car trips, happier citizens, and higher land values.'
+        ),
+        'category': 'City Planning',
+        'username': 'BikeLane',
+        'cover_url': 'https://picsum.photos/seed/cs2-walk1/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'CS2 Modding Tutorial — Create Your First Asset',
+        'content': (
+            'Learn how to create custom buildings and props for Cities: Skylines 2.'
+            ''
+            '## Tools You Need'
+            '- Blender (free, 3.6+): For 3D modeling'
+            '- Paradox Mod Tools: Official CS2 modding toolkit'
+            '- Substance Painter (optional): For textures'
+            ''
+            '## Step 1: Export Template'
+            'Open the Mod Tools, select "Create New Asset", choose a template building.'
+            ''
+            '## Step 2: Model in Blender'
+            'Keep poly count under 10,000 for performance. UV unwrap carefully.'
+            ''
+            '## Step 3: Texture'
+            'Diffuse, normal, and roughness maps required. Size: 1024x1024 max.'
+            ''
+            '## Step 4: Import & Test'
+            'Import back to Mod Tools, set category, test in-game. Fix LOD issues at distance.'
+        ),
+        'category': 'Mods & Modding',
+        'username': 'AssetCreator',
+        'cover_url': 'https://picsum.photos/seed/cs2-asset1/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Road Hierarchy Explained — The One System That Fixes Traffic',
+        'content': (
+            'The most important concept in CS2 traffic management explained simply.'
+            ''
+            '## The Hierarchy'
+            'Highway (6+ lanes) → Arterial (4 lanes) → Collector (2 lanes) → Local (2 lanes)'
+            ''
+            '## Rule #1: Never Connect High to Low'
+            'A highway should never dump directly into a local street. Always step down through collectors.'
+            ''
+            '## Rule #2: Spacing Matters'
+            'Collectors every 20-30 blocks. Arterials every 60-80 blocks.'
+            ''
+            '## Rule #3: Zoning on Collectors Only'
+            'No zoning on arterials or highways. Zoned buildings create driveways which cause traffic.'
+            ''
+            '## Rule #4: Roundabouts at Collectors'
+            'Use roundabouts at collector-to-collector intersections. Traffic lights on arterial-to-arterial.'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'GridlockSolver',
+        'cover_url': 'https://picsum.photos/seed/cs2-hier1/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'High-Density City Design — Skyscrapers Without Traffic Hell',
+        'content': (
+            'Build a dense downtown that works, with skyscrapers and functional traffic.'
+            ''
+            '## Grid Design'
+            'Use a 10x6 block grid for high-density zones. This fits buildings perfectly.'
+            ''
+            '## Public Transit Density'
+            'One metro station per 8 blocks. Bus lines every 4 blocks. Tram on main boulevards.'
+            ''
+            '## Service Placement'
+            'Police, fire, and clinic underground or on small lots. Use pedestrian paths between buildings.'
+            ''
+            '## Parking Policy'
+            'Enable "Paid Parking" policy in the city center. Ban street parking on arterials.'
+            ''
+            '## Green Space Ratio'
+            'One park per 4 blocks minimum. Citizens need leisure or they leave.'
+        ),
+        'category': 'City Planning',
+        'username': 'DensityKing',
+        'cover_url': 'https://picsum.photos/seed/cs2-dense1/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Roundabout Design Guide — Every Shape Tested',
+        'content': (
+            'Not all roundabouts are equal. Here are the best designs for every situation.'
+            ''
+            '## The Standard 4-Way (Best All-Rounder)'
+            '4 lanes, 40-unit radius. Exit immediately after entry. One lane on the roundabout itself.'
+            ''
+            '## The Turbo Roundabout (High Traffic)'
+            'Lane markings force drivers into correct lanes before entry. 30% more throughput.'
+            ''
+            '## The Dogbone (Highway Interchange)'
+            'Two roundabouts connected by a bridge. Best for highway-to-highway connections.'
+            ''
+            '## The Mini-Roundabout (Local Roads)'
+            '20-unit radius, no dedicated lanes. For low-traffic residential intersections only.'
+            ''
+            '## Common Mistakes'
+            '- Too many entry lanes (creates weaving)'
+            '- Too small radius (trucks can\'t navigate)'
+            '- No pedestrian crossings (citizens complain)'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'RoundaboutKing',
+        'cover_url': 'https://picsum.photos/seed/cs2-round1/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Disaster Management — Surviving Tornadoes, Earthquakes & Fires',
+        'content': (
+            'Prepare your city for disasters and minimize damage.'
+            ''
+            '## Tornado Preparedness'
+            'Build tornado shelters in every district. Keep fire stations at full staff during tornado season.'
+            ''
+            '## Earthquake Building Codes'
+            'Enable earthquake-resistant building policy in high-risk zones. Costs more but saves lives.'
+            ''
+            '## Fire Prevention'
+            'Fire stations within 15 blocks of every building. Hydrant coverage must be 100%.'
+            ''
+            '## Evacuation Routes'
+            'Designate evacuation highways. Keep them clear of traffic with dedicated lanes.'
+            ''
+            '## Aftermath Recovery'
+            'Keep $50,000 emergency fund. Prioritize power and water restoration first.'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'SafetyFirst',
+        'cover_url': 'https://picsum.photos/seed/cs2-disaster1/800/400',
+        'days_ago': 5,
+    },
+    {
+        'title': 'Terraforming Secrets — Beautiful Landscapes Without Mods',
+        'content': (
+            'Create stunning natural terrain using only vanilla tools.'
+            ''
+            '## The Shifting Base Technique'
+            'Use the shift key to raise terrain in smooth gradients. Creates natural-looking hills.'
+            ''
+            '## River Creation'
+            'Dig a trench from water source to destination. Use the level tool to control water flow.'
+            ''
+            '## Cliff Building'
+            'Raise terrain in steps. Use the smooth tool at 30% strength for natural cliff edges.'
+            ''
+            '## Island Creation'
+            'Lower terrain around a raised section. Connect with bridges later.'
+            ''
+            '## Tree Placement Strategy'
+            'Randomize tree placement with variations in size and type. Forests look best in clusters.'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'Terraformer',
+        'cover_url': 'https://picsum.photos/seed/cs2-terra1/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'Detailer\'s Guide — Making Your City Look Photorealistic',
+        'content': (
+            'Take your city from functional to beautiful with detailing techniques.'
+            ''
+            '## Prop Line Placement'
+            'Use prop lines along roads: trees every 4 units, benches every 8. Mix tree species.'
+            ''
+            '## Parking Lot Design'
+            'Create custom parking lots with surface painter. Add trees between parking rows.'
+            ''
+            '## Quay and Wall Design'
+            'Use quay walls along waterfront. Add pedestrian paths on top for waterfront walks.'
+            ''
+            '## Decoration Layering'
+            'Layer props: grass → bushes → trees → buildings. Creates depth and realism.'
+            ''
+            '## Lighting'
+            'Street lights on main roads only. Park lights in recreational areas. Create ambiance.'
+        ),
+        'category': 'Showcase',
+        'username': 'Detailer',
+        'cover_url': 'https://picsum.photos/seed/cs2-detail1/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Advanced Intersections — Highway Interchanges That Flow',
+        'content': (
+            'Design highway interchanges that keep traffic moving at any volume.'
+            ''
+            '## The Stack Interchange (4-Way)'
+            'Multiple levels. Left turns on elevated ramps. Best for highway-to-highway connections.'
+            ''
+            '## The Trumpet (T-Intersection)'
+            'Single-point interchange. Compact design for highway endings.'
+            ''
+            '## The Diamond (Simple & Effective)'
+            'One bridge, four ramps. Best for highway-to-arterial connections.'
+            ''
+            '## The Diverging Diamond'
+            'Traffic briefly crosses to opposite side. Higher throughput than standard diamond.'
+            ''
+            '## Spacing Rule'
+            'Interchanges must be at least 60 units apart or traffic backs up between them.'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'IntersectionFixer',
+        'cover_url': 'https://picsum.photos/seed/cs2-inter1/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Green Energy City — 100% Renewable Power Grid',
+        'content': (
+            'Build a sustainable city powered entirely by renewable energy.'
+            ''
+            '## Solar Strategy'
+            'Place solar farms in desert/biome regions. 20% more output in sunny areas.'
+            ''
+            '## Wind Power'
+            'Wind turbines on ridges and coastlines. Check wind map before placing.'
+            ''
+            '## Geothermal'
+            'Best for mountain maps. Provides constant baseline power. Expensive upfront.'
+            ''
+            '## Hydro Dams'
+            'Most efficient renewable. Requires river with elevation change. Plan dam placement carefully.'
+            ''
+            '## Energy Storage'
+            'Build pumped-storage hydro for night-time energy. Batteries are too expensive for large cities.'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'GreenEnergy',
+        'cover_url': 'https://picsum.photos/seed/cs2-green1/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'Historic District Design — Old World Charm in CS2',
+        'content': (
+            'Create beautiful historic districts with European-inspired architecture.'
+            ''
+            '## Building Style Selection'
+            'Use European-themed building styles from the workshop. Colored plaster and timber frame are best.'
+            ''
+            '## Street Design'
+            'Narrow, winding streets. Cobblestone surface. Street lamps every 6 units.'
+            ''
+            '## Plaza Placement'
+            'Central plaza with fountain, surrounded by mixed-use buildings. Add market stalls.'
+            ''
+            '## Wall and Gate'
+            'Surround the district with a decorative wall. Build gatehouses at entrances.'
+            ''
+            '## Zoning Rules'
+            'Low density only. Max 3 stories. Mandatory courtyard for every building.'
+        ),
+        'category': 'City Planning',
+        'username': 'HistoricDist',
+        'cover_url': 'https://picsum.photos/seed/cs2-hist1/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'CS2 Economy Deep Dive — Understanding the Simulation',
+        'content': (
+            'How the CS2 economy actually works under the hood.'
+            ''
+            '## The Three Economic Loops'
+            'Industry produces → Commercial sells → Residential consumes. Break any loop and the economy stalls.'
+            ''
+            '## Land Value Mechanics'
+            'Land value rises with: services, parks, education, low crime. Falls with: pollution, noise, crime.'
+            ''
+            '## Tax Optimization'
+            'Set taxes at 11% for all zones (1% above default). Lower industry taxes to attract jobs.'
+            ''
+            '## Import/Export Balance'
+            'Check the external connections panel. Too many imports means you need more local industry.'
+            ''
+            '## Budget Management'
+            'Keep service budgets at 100% until city reaches 20k population. Then optimize based on usage.'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'CS2Master',
+        'cover_url': 'https://picsum.photos/seed/cs2-econ1/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Showcase: Tokyo-Inspired District — Complete Build Log',
+        'content': (
+            'A detailed build log of a Tokyo-inspired district with neon lights and dense zoning.'
+            ''
+            '## Overview'
+            'Population: 45,000. Area: 120x80 blocks. Traffic: 78%.'
+            ''
+            '## Key Features'
+            '- Elevated train loop through district center'
+            '- Underground metro hub with 4 lines'
+            '- Pedestrian-only shopping street (neon-lit)'
+            '- High-density residential towers with ground-floor retail'
+            ''
+            '## Design Choices'
+            'Used the Japanese building theme pack. All roads have decorative power lines.'
+            ''
+            '## Traffic Solution'
+            'Three highway connections at north, south, and east. No cars allowed in the central 20 blocks.'
+            ''
+            '## What I\'d Do Differently'
+            'More parks. Citizens need green space even in a dense district.'
+        ),
+        'category': 'Showcase',
+        'username': 'SkylineView',
+        'cover_url': 'https://picsum.photos/seed/cs2-tokyo1/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Public Transport Economics — Which Systems Actually Profit?',
+        'content': (
+            'Analyze which transport systems make money and which drain your budget.'
+            ''
+            '## The Profitable Systems'
+            'Buses: Break even at 60% capacity. Cheapest to build and maintain.'
+            'Metro: Profitable above 2000 passengers/day per station. High upfront cost.'
+            ''
+            '## The Money Losers'
+            'Trams: Rarely profitable but great for short trips. Subsidize from other income.'
+            'Trains: Only profitable with intercity connections. Intracity trains lose money.'
+            ''
+            '## Ferries'
+            'Profitable ONLY on maps with natural water barriers. Otherwise a tourist attraction.'
+            ''
+            '## Pricing Strategy'
+            'Start with $2.50 base fare. Increase to $3.00 when 50% operational costs are covered by fares.'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'PeakEfficiency',
+        'cover_url': 'https://picsum.photos/seed/cs2-transit2/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Noise Pollution Solutions — Keeping Citizens Happy',
+        'content': (
+            'Comprehensive guide to managing noise pollution in Cities: Skylines 2.'
+            ''
+            '## Noise Sources'
+            'Roads (especially highways), industrial zones, airports, train stations, nightlife districts.'
+            ''
+            '## The Buffer Zone Method'
+            'Place offices between residential and commercial. Offices generate no noise and block it.'
+            ''
+            '## Tree Barriers'
+            '3 rows of trees between noise source and housing. Reduces noise by 50%.'
+            ''
+            '## Building Upgrades'
+            'Soundproofing building upgrade for residential. Costs but halves noise complaints.'
+            ''
+            '## Policy Solutions'
+            '"Quiet Hours" policy at night. "No Heavy Traffic" on residential streets.'
+        ),
+        'category': 'Tips & Tricks',
+        'username': 'ZenCity',
+        'cover_url': 'https://picsum.photos/seed/cs2-noise1/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'Waterfront Development — Build Beautiful Coastal Cities',
+        'content': (
+            'Design stunning waterfront areas with high land value and happy citizens.'
+            ''
+            '## The Promenade'
+            'Build a pedestrian path along the entire waterfront. Add benches, lamps, and trees every 6 units.'
+            ''
+            '## Mixed-Use Waterfront'
+            'Commercial on ground floor with residential above. Restaurants and cafes facing the water.'
+            ''
+            '## Marina Design'
+            'Build a harbor area with fishing docks. Add a park and parking lot nearby.'
+            ''
+            '## Flood Protection'
+            'Raise terrain 2-3 units along the coast. Build flood walls in low-lying areas.'
+            ''
+            '## Land Value Tips'
+            'Waterfront property values are 3x higher than inland. Luxury housing facing the water pays premium taxes.'
+        ),
+        'category': 'City Planning',
+        'username': 'WaterfrontPro',
+        'cover_url': 'https://picsum.photos/seed/cs2-water1/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'CS2 Building Themes — Complete Collection Guide',
+        'content': (
+            'The best building themes and collections for different city styles.'
+            ''
+            '## European Collection'
+            '- Colored Plaster Pack (12 buildings)'
+            '- Timber Frame Pack (8 buildings)'
+            '- Brick & Stone Pack (15 buildings)'
+            ''
+            '## American Collection'
+            '- Chicago Style (20 buildings)'
+            '- NYC Skyline Pack (25 buildings)'
+            '- Suburban House Collection (30 buildings)'
+            ''
+            '## Asian Collection'
+            '- Tokyo Modern (18 buildings)'
+            '- Shanghai Towers (15 buildings)'
+            '- Traditional Japanese (10 buildings)'
+            ''
+            '## Installation Guide'
+            'Subscribe on Paradox Mods. Enable in Content Manager. Apply via district style setting.'
+        ),
+        'category': 'Mods & Modding',
+        'username': 'AssetCreator',
+        'cover_url': 'https://picsum.photos/seed/cs2-theme1/800/400',
+        'days_ago': 2,
+    },
+    {
+        'title': 'Symmetry City Build — Perfect Urban Planning',
+        'content': (
+            'Build a perfectly symmetrical city with balanced districts and mirrored layouts.'
+            ''
+            '## The Master Plan'
+            'Divide your city into 4 quadrants with highways forming a cross in the center.'
+            ''
+            '## Quadrant Design'
+            'NE: Residential, NW: Commercial, SE: Industry, SW: Offices. Services at the center.'
+            ''
+            '## Road Grid'
+            'Mirror road layout in each quadrant. Main arterial runs N-S and E-W through center.'
+            ''
+            '## Symmetry Tips'
+            'Build one quadrant completely, then mirror it. Use the measure tool for exact distances.'
+            ''
+            '## Challenges'
+            'Traffic concentrates at the center crossing. Build a massive roundabout or stack interchange there.'
+        ),
+        'category': 'Showcase',
+        'username': 'SymmetryKing',
+        'cover_url': 'https://picsum.photos/seed/cs2-sym1/800/400',
+        'days_ago': 5,
+    },
 ]
 
 
