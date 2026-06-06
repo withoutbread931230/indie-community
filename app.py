@@ -525,7 +525,9 @@ def init_db():
 def seed_data():
     existing = query_db('SELECT COUNT(*) as cnt FROM posts')
     if existing and existing['cnt'] > 3:
-        return
+        first = query_db('SELECT title FROM posts ORDER BY id ASC LIMIT 1', one=True)
+        if first and 'CS2' in first['title']:
+            return
     if existing and existing['cnt'] > 0:
         query_db('DELETE FROM comments')
         query_db('DELETE FROM posts')
