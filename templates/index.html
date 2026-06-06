@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
-{% block title %}IndieDev Hub - Indie Game Community{% endblock %}
+{% block title %}都市天际线2 攻略站 - 玩家社区{% endblock %}
 {% block content %}
 
 <div class="hero">
-    <h1>Where <span>Indie Devs</span> Connect</h1>
-    <p>Share your games, get feedback, find collaborators, and grow together</p>
+    <div class="hero-badge">Cities: Skylines II</div>
+    <h1>都市<span>天际线2</span> 攻略社区</h1>
+    <p>分享城市建造心得、交流交通规划技巧、推荐实用模组</p>
     <form class="search-bar" method="GET">
-        <input type="text" name="q" placeholder="Search posts..." value="{{ search }}">
-        <button type="submit">Search</button>
+        <input type="text" name="q" placeholder="搜索攻略..." value="{{ search }}">
+        <button type="submit">搜索</button>
     </form>
 </div>
 
 <div class="cat-pills">
-    <a href="{{ url_for('index') }}" class="cat-pill {% if not selected_category %}active{% endif %}">All</a>
+    <a href="{{ url_for('index') }}" class="cat-pill {% if not selected_category %}active{% endif %}">全部</a>
     {% for cat in categories %}
         <a href="{{ url_for('index', category=cat) }}" class="cat-pill {% if selected_category == cat %}active{% endif %}">{{ cat }}</a>
     {% endfor %}
@@ -29,35 +30,35 @@
                             <span class="cat-tag">{{ post['category'] }}</span>
                             <span>by <a href="{{ url_for('profile', user_id=post['user_id']) }}">{{ post['username'] }}</a></span>
                             <span>{{ post['created_at'][:10] }}</span>
-                            <span>{{ post['comment_count'] }} comments</span>
+                            <span>{{ post['comment_count'] }} 评论</span>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         {% else %}
             <div class="empty-state">
-                <div class="emoji">🎮</div>
-                <p>No posts yet{% if search %} matching "{{ search }}"{% endif %}{% if selected_category %} in {{ selected_category }}{% endif %}.</p>
-                <p><a href="{{ url_for('new_post') }}">Be the first to post!</a></p>
+                <div class="emoji">🏙️</div>
+                <p>还没有攻略{% if search %}匹配"{{ search }}"{% endif %}{% if selected_category %}属于{{ selected_category }}{% endif %}。</p>
+                <p><a href="{{ url_for('new_post') }}">发布第一篇攻略！</a></p>
             </div>
         {% endif %}
     </div>
 
     <div class="sidebar">
         <div class="widget">
-            <h3>Top Contributors</h3>
+            <h3>活跃市长</h3>
             {% for u in top_users %}
                 <div class="user-row">
                     <div class="avatar">{{ u['username'][0]|upper }}</div>
                     <a href="{{ url_for('profile', user_id=u['id']) }}" class="name">{{ u['username'] }}</a>
-                    <span class="count">{{ u['post_count'] }} posts</span>
+                    <span class="count">{{ u['post_count'] }} 篇</span>
                 </div>
             {% else %}
-                <p style="color:#666;font-size:13px;">No users yet</p>
+                <p style="color:#666;font-size:13px;">暂无玩家</p>
             {% endfor %}
         </div>
         <div class="widget">
-            <h3>Categories</h3>
+            <h3>攻略分类</h3>
             {% for cat in categories %}
                 <div class="user-row">
                     <a href="{{ url_for('index', category=cat) }}" style="font-size:13px;">{{ cat }}</a>

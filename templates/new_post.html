@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}New Post - IndieDev Hub{% endblock %}
+{% block title %}发布攻略 - 都市天际线2 攻略站{% endblock %}
 {% block content %}
 
 <div class="form-card" style="max-width:700px;">
-    <h1>Create a Post</h1>
+    <h1>发布攻略</h1>
     <form method="POST">
         <div class="form-group">
-            <label>Title</label>
-            <input type="text" name="title" required placeholder="e.g. My first game jam experience">
+            <label>标题</label>
+            <input type="text" name="title" required placeholder="例如：新手开局规划思路分享">
         </div>
         <div class="form-group">
-            <label>Category</label>
+            <label>分类</label>
             <select name="category">
                 {% for cat in categories %}
                     <option value="{{ cat }}">{{ cat }}</option>
@@ -18,10 +18,10 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Content</label>
-            <textarea name="content" required placeholder="Share your thoughts, questions, or showcase your work..."></textarea>
+            <label>内容</label>
+            <textarea name="content" required placeholder="分享你的城市建造心得、交通规划技巧或模组推荐……"></textarea>
         </div>
-        <button type="submit" class="submit-btn">Publish Post</button>
+        <button type="submit" class="submit-btn">发布</button>
     </form>
 </div>
 

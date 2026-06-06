@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}Sign Up - IndieDev Hub{% endblock %}
+{% block title %}注册 - 都市天际线2 攻略站{% endblock %}
 {% block content %}
 
 <div class="form-card">
-    <h1>Join the Community</h1>
+    <h1>成为新市长</h1>
     <form method="POST">
         <div class="form-group">
-            <label>Username</label>
+            <label>用户名</label>
             <input type="text" name="username" required>
         </div>
         <div class="form-group">
-            <label>Password</label>
+            <label>密码</label>
             <input type="password" name="password" required>
         </div>
-        <button type="submit" class="submit-btn">Create Account</button>
+        <button type="submit" class="submit-btn">创建账号</button>
     </form>
     <div class="form-footer">
-        Already have an account? <a href="{{ url_for('login') }}">Login</a>
+        已有账号？<a href="{{ url_for('login') }}">登录</a>
     </div>
 </div>
 

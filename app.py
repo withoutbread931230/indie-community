@@ -13,8 +13,8 @@ if DATABASE_URL:
     import psycopg2.extras
 
 CATEGORIES = [
-    'Game Dev', 'Game Discussion', 'Showcase',
-    'Resources', 'Collaboration', 'Pixel Art', 'Game Jams'
+    '新手入门', '城市规划', '交通系统',
+    '模组推荐', '实用技巧', '问题求助', '作品展示'
 ]
 
 def get_db():
@@ -175,17 +175,17 @@ def register():
         username = request.form['username'].strip()
         password = request.form['password']
         if not username or not password:
-            flash('Username and password are required.')
+            flash('用户名和密码不能为空。')
             return render_template('register.html')
         try:
             query_db('INSERT INTO users (username, password, created_at) VALUES (?, ?, ?)',
                      (username, password, now()))
             user = query_db('SELECT * FROM users WHERE username = ?', (username,), one=True)
             session['user_id'] = user['id']
-            flash('Welcome aboard, indie dev!')
+            flash('欢迎加入，新市长！')
             return redirect(url_for('index'))
         except Exception:
-            flash('Username already taken.')
+            flash('用户名已被使用。')
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -197,32 +197,32 @@ def login():
                         (username, password), one=True)
         if user:
             session['user_id'] = user['id']
-            flash('Welcome back!')
+            flash('欢迎回来，市长！')
             return redirect(url_for('index'))
-        flash('Invalid username or password.')
+        flash('用户名或密码错误。')
     return render_template('login.html')
 
 @app.route('/logout')
 def logout():
     session.clear()
-    flash('Logged out.')
+    flash('已退出登录。')
     return redirect(url_for('index'))
 
 @app.route('/new-post', methods=['GET', 'POST'])
 def new_post():
     if not g.user:
-        flash('Please login first.')
+        flash('请先登录。')
         return redirect(url_for('login'))
     if request.method == 'POST':
         title = request.form['title'].strip()
         content = request.form['content'].strip()
         category = request.form['category']
         if not title or not content:
-            flash('Title and content are required.')
+            flash('标题和内容不能为空。')
             return render_template('new_post.html', categories=CATEGORIES)
         query_db('INSERT INTO posts (title, content, category, user_id, created_at) VALUES (?, ?, ?, ?, ?)',
                  (title, content, category, g.user['id'], now()))
-        flash('Post created!')
+        flash('攻略发布成功！')
         return redirect(url_for('index'))
     return render_template('new_post.html', categories=CATEGORIES)
 
@@ -234,7 +234,7 @@ def view_post(post_id):
         WHERE p.id = ?
     ''', (post_id,), one=True)
     if not post:
-        flash('Post not found.')
+        flash('攻略不存在。')
         return redirect(url_for('index'))
 
     if request.method == 'POST' and g.user:
@@ -242,7 +242,7 @@ def view_post(post_id):
         if content:
             query_db('INSERT INTO comments (post_id, user_id, content, created_at) VALUES (?, ?, ?, ?)',
                      (post_id, g.user['id'], content, now()))
-            flash('Comment added!')
+            flash('评论发表成功！')
             return redirect(url_for('view_post', post_id=post_id))
 
     comments = query_db('''
@@ -257,7 +257,7 @@ def view_post(post_id):
 def profile(user_id):
     user = query_db('SELECT * FROM users WHERE id = ?', (user_id,), one=True)
     if not user:
-        flash('User not found.')
+        flash('用户不存在。')
         return redirect(url_for('index'))
     posts = query_db('''
         SELECT p.*, (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) as comment_count
