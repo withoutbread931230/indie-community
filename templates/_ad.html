@@ -4,11 +4,11 @@
       <div class="ad-label">{{ _('ad.label') }}</div>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ ad.adsense_client }}" crossorigin="anonymous"></script>
       {% if slot == 'sidebar' %}
-      <ins class="adsbygoogle" style="display:block" data-ad-client="{{ ad.adsense_client }}" data-ad-slot="{{ ad.slot_id|default('1234567890') }}" data-ad-format="rectangle"></ins>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="{{ ad.adsense_client }}" data-ad-slot="{{ slot_id|default('1234567890') }}" data-ad-format="rectangle"></ins>
       {% elif slot == 'banner' %}
-      <ins class="adsbygoogle" style="display:block" data-ad-client="{{ ad.adsense_client }}" data-ad-slot="{{ ad.slot_id|default('1234567890') }}" data-ad-format="horizontal"></ins>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="{{ ad.adsense_client }}" data-ad-slot="{{ slot_id|default('1234567890') }}" data-ad-format="horizontal"></ins>
       {% elif slot == 'in-content' %}
-      <ins class="adsbygoogle" style="display:block" data-ad-client="{{ ad.adsense_client }}" data-ad-slot="{{ ad.slot_id|default('1234567890') }}" data-ad-format="auto"></ins>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="{{ ad.adsense_client }}" data-ad-slot="{{ slot_id|default('1234567890') }}" data-ad-format="auto"></ins>
       {% endif %}
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
@@ -17,27 +17,27 @@
       <div class="ad-label">{{ _('ad.label') }}</div>
       <div class="affiliate-content">
         {% if slot == 'sidebar' %}
-          <a href="{{ ad.steam_url }}" target="_blank" rel="nofollow sponsored" class="affiliate-card">
-            <div class="affiliate-img">🎮</div>
-            <div class="affiliate-body">
-              <strong>Cities: Skylines II</strong>
-              <span>Build the city of your dreams on Steam</span>
-              <span class="affiliate-cta">{{ _('ad.buy_now') }}</span>
-            </div>
-          </a>
-        {% elif slot == 'banner' %}
-          <a href="{{ ad.steam_url }}" target="_blank" rel="nofollow sponsored" class="affiliate-banner">
-            <span class="affiliate-banner-icon">🏙️</span>
-            <span class="affiliate-banner-text"><strong>Cities: Skylines II</strong> — {{ _('ad.banner_text') }}</span>
-            <span class="affiliate-banner-cta">{{ _('ad.buy_now') }} →</span>
-          </a>
-        {% elif slot == 'in-content' %}
-          <a href="{{ ad.steam_dlc_url }}" target="_blank" rel="nofollow sponsored" class="affiliate-card">
+          <a href="{{ ad.humble_url }}" target="_blank" rel="nofollow sponsored" class="affiliate-card">
             <div class="affiliate-img">🏙️</div>
             <div class="affiliate-body">
               <strong>Cities: Skylines II</strong>
               <span>{{ _('ad.banner_text') }}</span>
-              <span class="affiliate-cta">{{ _('ad.buy_now') }}</span>
+              <span class="affiliate-cta">{{ _('ad.buy_from') }} Humble Bundle →</span>
+            </div>
+          </a>
+        {% elif slot == 'banner' %}
+          <a href="{{ ad.humble_url }}" target="_blank" rel="nofollow sponsored" class="affiliate-banner">
+            <span class="affiliate-banner-icon">🏙️</span>
+            <span class="affiliate-banner-text"><strong>Cities: Skylines II</strong> — {{ _('ad.banner_text') }}</span>
+            <span class="affiliate-banner-cta">{{ _('ad.buy_from') }} Humble Bundle →</span>
+          </a>
+        {% elif slot == 'in-content' %}
+          <a href="{{ ad.humble_url }}" target="_blank" rel="nofollow sponsored" class="affiliate-card">
+            <div class="affiliate-img">🏙️</div>
+            <div class="affiliate-body">
+              <strong>Cities: Skylines II</strong>
+              <span>{{ _('ad.banner_text') }}</span>
+              <span class="affiliate-cta">{{ _('ad.buy_from') }} Humble Bundle →</span>
             </div>
           </a>
         {% endif %}

@@ -37,18 +37,19 @@ def _(key, lang=None):
 # Set AD_MODE=adsense + ADSENSE_CLIENT=ca-pub-xxx for Google AdSense
 # Set AD_MODE=affiliate (default) for CS2 affiliate banners
 # Set AD_MODE=none to disable all ads
-# Set STEAM_PARTNER=yourid for Steam affiliate link
+# Set HUMBLE_PARTNER=yourid for Humble Bundle affiliate (recommended, up to 15% commission)
+#   Sign up: https://www.humblebundle.com/affiliates
 AD_MODE = os.environ.get('AD_MODE', 'affiliate').lower()
 ADSENSE_CLIENT = os.environ.get('ADSENSE_CLIENT', '')
-STEAM_PARTNER = os.environ.get('STEAM_PARTNER', '')
+HUMBLE_PARTNER = os.environ.get('HUMBLE_PARTNER', '')
 
 AD_CONFIG = {
     'mode': AD_MODE,
     'adsense_client': ADSENSE_CLIENT,
-    'steam_partner': STEAM_PARTNER,
+    'humble_partner': HUMBLE_PARTNER,
     'enabled': AD_MODE != 'none',
-    'steam_url': f'https://store.steampowered.com/app/949230/Cities_Skylines_II/?partner={STEAM_PARTNER}' if STEAM_PARTNER else 'https://store.steampowered.com/app/949230/Cities_Skylines_II/',
-    'steam_dlc_url': f'https://store.steampowered.com/app/949230/Cities_Skylines_II/?partner={STEAM_PARTNER}' if STEAM_PARTNER else 'https://store.steampowered.com/app/949230/Cities_Skylines_II/',
+    'steam_url': 'https://store.steampowered.com/app/949230/Cities_Skylines_II/',
+    'humble_url': f'https://www.humblebundle.com/store/cities-skylines-ii?partner={HUMBLE_PARTNER}' if HUMBLE_PARTNER else 'https://www.humblebundle.com/store/cities-skylines-ii',
 }
 
 CATEGORIES = [
