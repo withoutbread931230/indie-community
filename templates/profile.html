@@ -1,24 +1,31 @@
 {% extends 'base.html' %}
-{% block title %}{{ profile_user['username'] }} - 都市天际线2 攻略站{% endblock %}
+{% block title %}{{ profile_user['username'] }} — GameGuide Hub{% endblock %}
 {% block content %}
 
 <div class="profile-header">
     <div class="avatar-big">{{ profile_user['username'][0]|upper }}</div>
     <h1>{{ profile_user['username'] }}</h1>
-    <p class="bio">注册于 {{ profile_user['created_at'][:10] }}</p>
+    <p class="bio">Member since {{ profile_user['created_at'][:10] }} · {{ posts|length }} guides written</p>
 </div>
 
-<h2 style="font-size:16px;color:#aaaac0;margin-bottom:14px;">攻略 ({{ posts|length }})</h2>
+<h2 style="font-size:16px;color:#8090b0;margin-bottom:14px;">📝 Guides ({{ posts|length }})</h2>
 
 {% if posts %}
     <div class="post-list">
         {% for post in posts %}
             <div class="post-card">
-                <a href="{{ url_for('view_post', post_id=post['id']) }}" class="title">{{ post['title'] }}</a>
-                <div class="meta">
-                    <span class="cat-tag">{{ post['category'] }}</span>
-                    <span>{{ post['created_at'][:10] }}</span>
-                    <span>{{ post['comment_count'] }} 评论</span>
+                <div class="post-card-cover" style="background: linear-gradient(135deg, #1a3050, #0f1a2e);">
+                    {% if post['cover_url'] %}
+                        <img src="{{ post['cover_url'] }}" alt="{{ post['title'] }}" loading="lazy">
+                    {% endif %}
+                </div>
+                <div class="post-card-body">
+                    <span class="cat-tag">{{ get_category_icon(post['category']) }} {{ post['category'] }}</span>
+                    <a href="{{ url_for('view_post', post_id=post['id']) }}" class="title">{{ post['title'] }}</a>
+                    <div class="meta">
+                        <span>{{ post['created_at'][:10] }}</span>
+                        <span>{{ post['comment_count'] }} comments</span>
+                    </div>
                 </div>
             </div>
         {% endfor %}
@@ -26,7 +33,7 @@
 {% else %}
     <div class="empty-state">
         <div class="emoji">📝</div>
-        <p>还没有发布攻略。</p>
+        <p>No guides written yet.</p>
     </div>
 {% endif %}
 

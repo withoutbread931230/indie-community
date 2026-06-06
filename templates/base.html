@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}都市天际线2 攻略站{% endblock %}</title>
+    <title>{% block title %}GameGuide Hub{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="topbar">
         <div class="topbar-inner">
-            <a href="{{ url_for('index') }}" class="logo">🌆 都市<span>天际线2</span></a>
+            <a href="{{ url_for('index') }}" class="logo">🎮 GameGuide <span>Hub</span></a>
             <div class="nav-links">
-                <a href="{{ url_for('index') }}">首页</a>
-                <a href="{{ url_for('new_post') }}">发布攻略</a>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('new_post') }}">Write Guide</a>
                 {% if g.user %}
-                    <span class="user-info"><a href="{{ url_for('profile', user_id=g.user['id']) }}"><strong>{{ g.user['username'] }}</strong></a> | <a href="{{ url_for('logout') }}">退出</a></span>
+                    <span class="user-info"><a href="{{ url_for('profile', user_id=g.user['id']) }}"><strong>{{ g.user['username'] }}</strong></a> | <a href="{{ url_for('logout') }}">Logout</a></span>
                 {% else %}
-                    <a href="{{ url_for('login') }}">登录</a>
-                    <a href="{{ url_for('register') }}" class="btn">注册</a>
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn">Sign Up</a>
                 {% endif %}
             </div>
         </div>

@@ -1,27 +1,35 @@
 {% extends 'base.html' %}
-{% block title %}发布攻略 - 都市天际线2 攻略站{% endblock %}
+{% block title %}Write a Guide — GameGuide Hub{% endblock %}
 {% block content %}
 
-<div class="form-card" style="max-width:700px;">
-    <h1>发布攻略</h1>
+<div class="form-card form-card-wide">
+    <h1>✍️ Write a Guide</h1>
+    <p class="form-subtitle">Share your gaming knowledge with the community</p>
     <form method="POST">
         <div class="form-group">
-            <label>标题</label>
-            <input type="text" name="title" required placeholder="例如：新手开局规划思路分享">
+            <label>Title</label>
+            <input type="text" name="title" required placeholder="e.g. Cities: Skylines 2 — Beginner's Guide">
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Category</label>
+                <select name="category">
+                    {% for cat in categories %}
+                        <option value="{{ cat }}">{{ get_category_icon(cat) }} {{ cat }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Cover Image URL (optional)</label>
+                <input type="url" name="cover_url" placeholder="https://example.com/image.jpg">
+            </div>
         </div>
         <div class="form-group">
-            <label>分类</label>
-            <select name="category">
-                {% for cat in categories %}
-                    <option value="{{ cat }}">{{ cat }}</option>
-                {% endfor %}
-            </select>
+            <label>Content</label>
+            <textarea name="content" required placeholder="Write your guide here... Use ## for headings, - for lists, and **bold** for emphasis."></textarea>
+            <div class="form-hint">💡 Use ## for headings, - for bullet lists, **bold** for emphasis, and blank lines between paragraphs.</div>
         </div>
-        <div class="form-group">
-            <label>内容</label>
-            <textarea name="content" required placeholder="分享你的城市建造心得、交通规划技巧或模组推荐……"></textarea>
-        </div>
-        <button type="submit" class="submit-btn">发布</button>
+        <button type="submit" class="submit-btn">Publish Guide</button>
     </form>
 </div>
 

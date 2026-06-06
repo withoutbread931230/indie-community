@@ -1,21 +1,45 @@
 {% extends 'base.html' %}
-{% block title %}都市天际线2 攻略站 - 玩家社区{% endblock %}
+{% block title %}GameGuide Hub — Game Walkthroughs, Tips & Community Guides{% endblock %}
 {% block content %}
 
 <div class="hero">
-    <div class="hero-badge">Cities: Skylines II</div>
-    <h1>都市<span>天际线2</span> 攻略社区</h1>
-    <p>分享城市建造心得、交流交通规划技巧、推荐实用模组</p>
+    <div class="hero-badge">🔥 Featured: Cities: Skylines 2 Week</div>
+    <h1>Level Up Your <span>Game</span></h1>
+    <p>Community-driven guides, walkthroughs, and tips for the games you love</p>
     <form class="search-bar" method="GET">
-        <input type="text" name="q" placeholder="搜索攻略..." value="{{ search }}">
-        <button type="submit">搜索</button>
+        <input type="text" name="q" placeholder="Search guides..." value="{{ search }}">
+        <button type="submit">Search</button>
     </form>
 </div>
 
+{% if cs2_posts %}
+<div class="featured-section">
+    <div class="featured-header">
+        <div class="featured-icon">🏙️</div>
+        <div>
+            <h2>Cities: Skylines 2 <span>Guide Collection</span></h2>
+            <p>Master city-building with our community's best CS2 guides</p>
+        </div>
+    </div>
+    <div class="featured-grid">
+        {% for post in cs2_posts %}
+        <a href="{{ url_for('view_post', post_id=post['id']) }}" class="featured-card" style="background: linear-gradient(135deg, #0f1a2e 0%, #1a3050 100%);">
+            <div class="featured-card-badge">🏙️ CS2</div>
+            <h3>{{ post['title'] }}</h3>
+            <div class="featured-card-meta">
+                <span>by {{ post['username'] }}</span>
+                <span>{{ post['comment_count'] }} comments</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
 <div class="cat-pills">
-    <a href="{{ url_for('index') }}" class="cat-pill {% if not selected_category %}active{% endif %}">全部</a>
+    <a href="{{ url_for('index') }}" class="cat-pill {% if not selected_category %}active{% endif %}">All</a>
     {% for cat in categories %}
-        <a href="{{ url_for('index', category=cat) }}" class="cat-pill {% if selected_category == cat %}active{% endif %}">{{ cat }}</a>
+        <a href="{{ url_for('index', category=cat) }}" class="cat-pill {% if selected_category == cat %}active{% endif %}">{{ get_category_icon(cat) }} {{ cat }}</a>
     {% endfor %}
 </div>
 
@@ -25,43 +49,63 @@
             <div class="post-list">
                 {% for post in posts %}
                     <div class="post-card">
-                        <a href="{{ url_for('view_post', post_id=post['id']) }}" class="title">{{ post['title'] }}</a>
-                        <div class="meta">
-                            <span class="cat-tag">{{ post['category'] }}</span>
-                            <span>by <a href="{{ url_for('profile', user_id=post['user_id']) }}">{{ post['username'] }}</a></span>
-                            <span>{{ post['created_at'][:10] }}</span>
-                            <span>{{ post['comment_count'] }} 评论</span>
+                        <div class="post-card-cover" style="background: linear-gradient(135deg, #1a3050, #0f1a2e);">
+                            {% if post['cover_url'] %}
+                                <img src="{{ post['cover_url'] }}" alt="{{ post['title'] }}" loading="lazy">
+                            {% endif %}
+                        </div>
+                        <div class="post-card-body">
+                            <span class="cat-tag">{{ get_category_icon(post['category']) }} {{ post['category'] }}</span>
+                            <a href="{{ url_for('view_post', post_id=post['id']) }}" class="title">{{ post['title'] }}</a>
+                            <div class="meta">
+                                <span>by <a href="{{ url_for('profile', user_id=post['user_id']) }}">{{ post['username'] }}</a></span>
+                                <span>{{ post['created_at'][:10] }}</span>
+                                <span>{{ post['comment_count'] }} comments</span>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         {% else %}
             <div class="empty-state">
-                <div class="emoji">🏙️</div>
-                <p>还没有攻略{% if search %}匹配"{{ search }}"{% endif %}{% if selected_category %}属于{{ selected_category }}{% endif %}。</p>
-                <p><a href="{{ url_for('new_post') }}">发布第一篇攻略！</a></p>
+                <div class="emoji">🎮</div>
+                <p>No guides yet{% if search %} matching "{{ search }}"{% endif %}{% if selected_category %} in {{ selected_category }}{% endif %}.</p>
+                <p><a href="{{ url_for('new_post') }}">Write the first guide!</a></p>
             </div>
         {% endif %}
     </div>
 
     <div class="sidebar">
         <div class="widget">
-            <h3>活跃市长</h3>
+            <h3>🔥 Popular Games</h3>
+            {% for game in games %}
+                <div class="game-row">
+                    <div class="game-icon" style="background: {{ game.color }}20; border-color: {{ game.color }}40;">
+                        {{ game.icon }}
+                    </div>
+                    <div class="game-info">
+                        <strong>{{ game.name }}</strong>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="widget">
+            <h3>🏆 Top Contributors</h3>
             {% for u in top_users %}
                 <div class="user-row">
                     <div class="avatar">{{ u['username'][0]|upper }}</div>
                     <a href="{{ url_for('profile', user_id=u['id']) }}" class="name">{{ u['username'] }}</a>
-                    <span class="count">{{ u['post_count'] }} 篇</span>
+                    <span class="count">{{ u['post_count'] }} guides</span>
                 </div>
             {% else %}
-                <p style="color:#666;font-size:13px;">暂无玩家</p>
+                <p style="color:#607090;font-size:13px;">No contributors yet</p>
             {% endfor %}
         </div>
         <div class="widget">
-            <h3>攻略分类</h3>
+            <h3>📂 Categories</h3>
             {% for cat in categories %}
                 <div class="user-row">
-                    <a href="{{ url_for('index', category=cat) }}" style="font-size:13px;">{{ cat }}</a>
+                    <a href="{{ url_for('index', category=cat) }}" style="font-size:13px;">{{ get_category_icon(cat) }} {{ cat }}</a>
                 </div>
             {% endfor %}
         </div>
