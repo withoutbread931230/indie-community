@@ -526,7 +526,7 @@ def seed_data():
     existing = query_db('SELECT COUNT(*) as cnt FROM posts')
     if existing and existing['cnt'] > 3:
         first = query_db('SELECT title FROM posts ORDER BY id ASC LIMIT 1', one=True)
-        if first and 'Beginner' in first['title'] and 'CS2' in first.get('content', ''):
+        if first and 'Beginner' in first['title']:
             return
     if existing and existing['cnt'] > 0:
         if DATABASE_URL:
@@ -541,24 +541,30 @@ def seed_data():
     from datetime import timedelta
     base_time = datetime.utcnow()
     for i, post in enumerate(SEED_POSTS):
-        user = query_db('SELECT id FROM users WHERE username = ?', (post['username'],), one=True)
-        if not user:
-            query_db('INSERT INTO users (username, password, created_at) VALUES (?, ?, ?)',
-                     (post['username'], 'guide123', (base_time - timedelta(days=post['days_ago'] + 1)).isoformat() + 'Z'))
+        try:
             user = query_db('SELECT id FROM users WHERE username = ?', (post['username'],), one=True)
-        created = (base_time - timedelta(days=post['days_ago'])).isoformat() + 'Z'
-        query_db(
-            'INSERT INTO posts (title, content, category, cover_url, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)',
-            (post['title'], post['content'], post['category'], post['cover_url'], user['id'], created)
-        )
+            if not user:
+                query_db('INSERT INTO users (username, password, created_at) VALUES (?, ?, ?)',
+                         (post['username'], 'guide123', (base_time - timedelta(days=post['days_ago'] + 1)).isoformat() + 'Z'))
+                user = query_db('SELECT id FROM users WHERE username = ?', (post['username'],), one=True)
+            created = (base_time - timedelta(days=post['days_ago'])).isoformat() + 'Z'
+            query_db(
+                'INSERT INTO posts (title, content, category, cover_url, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)',
+                (post['title'], post['content'], post['category'], post['cover_url'], user['id'], created)
+            )
+        except Exception as e:
+            import sys, traceback
+            print(f'Seed item {i} failed: {post["title"][:40]}... — {e}', file=sys.stderr)
+            traceback.print_exc()
 
 with app.app_context():
     init_db()
     try:
         seed_data()
     except Exception as e:
-        import sys
+        import sys, traceback
         print(f'Seed data error (non-fatal): {e}', file=sys.stderr)
+        traceback.print_exc()
 
 def now():
     return datetime.utcnow().isoformat() + 'Z'
