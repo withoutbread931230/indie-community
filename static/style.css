@@ -352,6 +352,18 @@ a:hover { color: #6aafe9; }
 .ad-banner { margin: 20px 0 28px; }
 .ad-in-content { margin: 24px 0; }
 
+/* Pagination */
+.pagination { display: flex; gap: 6px; justify-content: center; margin: 28px 0; }
+.page-link {
+    display: flex; align-items: center; justify-content: center;
+    min-width: 36px; height: 36px; padding: 0 10px;
+    background: #0f1a2e; border: 1px solid #1a3050; border-radius: 8px;
+    color: #8090b0; font-size: 13px; font-weight: 600; transition: all 0.2s;
+}
+.page-link:hover { border-color: #4a90d9; color: #e8edf5; }
+.page-link.active { background: #4a90d9; border-color: #4a90d9; color: #fff; }
+.page-link.prev, .page-link.next { font-size: 18px; }
+
 /* Affiliate */
 .affiliate-card {
     display: flex; gap: 12px; align-items: center;

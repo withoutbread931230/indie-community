@@ -1255,9 +1255,13 @@ def set_lang(code):
 @app.route('/')
 def index():
     category = request.args.get('category')
-    search = request.args.get('q', '').strip()
+    search = request.args.get('q', '').strip() or None
     lang = g.lang
+    page = request.args.get('page', 1, type=int)
+    if page < 1: page = 1
+    per_page = 12
 
+    count_q = 'SELECT COUNT(*) as cnt FROM posts p JOIN users u ON p.user_id = u.id'
     query = '''
         SELECT p.*, u.username,
                (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) as comment_count
@@ -1276,12 +1280,16 @@ def index():
         conditions.append('(p.title LIKE ? OR p.content LIKE ?)')
         params.extend([f'%{search}%', f'%{search}%'])
 
-    if conditions:
-        query += ' WHERE ' + ' AND '.join(conditions)
+    where = ' WHERE ' + ' AND '.join(conditions) if conditions else ''
 
-    query += ' ORDER BY p.created_at DESC'
+    total = query_db(count_q + where, params, one=True)
+    total_posts = total['cnt'] if total else 0
+    total_pages = max(1, (total_posts + per_page - 1) // per_page)
+    if page > total_pages: page = total_pages
 
-    posts = query_db(query, params)
+    offset = (page - 1) * per_page
+    posts = query_db(query + where + ' ORDER BY p.created_at DESC LIMIT ? OFFSET ?',
+                     params + [per_page, offset])
     featured = query_db('''
         SELECT p.*, u.username,
                (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) as comment_count
@@ -1298,7 +1306,8 @@ def index():
     return render_template('index.html', posts=posts, featured=featured, categories=CATEGORIES,
                            get_category_icon=get_category_icon,
                            selected_category=category, search=search,
-                           top_users=top_users, lang=lang, _=_)
+                           top_users=top_users, lang=lang, _=_,
+                           page=page, total_pages=total_pages)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
