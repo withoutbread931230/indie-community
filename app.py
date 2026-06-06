@@ -33,6 +33,24 @@ def _(key, lang=None):
     trans = TRANSLATIONS.get(lang, TRANSLATIONS.get('en', {}))
     return trans.get(key, TRANSLATIONS.get('en', {}).get(key, key))
 
+# Ad Configuration
+# Set AD_MODE=adsense + ADSENSE_CLIENT=ca-pub-xxx for Google AdSense
+# Set AD_MODE=affiliate (default) for CS2 affiliate banners
+# Set AD_MODE=none to disable all ads
+# Set STEAM_PARTNER=yourid for Steam affiliate link
+AD_MODE = os.environ.get('AD_MODE', 'affiliate').lower()
+ADSENSE_CLIENT = os.environ.get('ADSENSE_CLIENT', '')
+STEAM_PARTNER = os.environ.get('STEAM_PARTNER', '')
+
+AD_CONFIG = {
+    'mode': AD_MODE,
+    'adsense_client': ADSENSE_CLIENT,
+    'steam_partner': STEAM_PARTNER,
+    'enabled': AD_MODE != 'none',
+    'steam_url': f'https://store.steampowered.com/app/949230/Cities_Skylines_II/?partner={STEAM_PARTNER}' if STEAM_PARTNER else 'https://store.steampowered.com/app/949230/Cities_Skylines_II/',
+    'steam_dlc_url': f'https://store.steampowered.com/app/949230/Cities_Skylines_II/?partner={STEAM_PARTNER}' if STEAM_PARTNER else 'https://store.steampowered.com/app/949230/Cities_Skylines_II/',
+}
+
 CATEGORIES = [
     'Getting Started', 'City Planning', 'Traffic & Transit',
     'Mods & Modding', 'Tips & Tricks', 'Guides & Walkthroughs', 'Showcase'
@@ -1215,7 +1233,7 @@ def get_category_icon(category):
 
 @app.context_processor
 def inject_globals():
-    return dict(lang=getattr(g, 'lang', 'en'), _=lambda key: _(key, getattr(g, 'lang', 'en')), LANGUAGES=LANGUAGES)
+    return dict(lang=getattr(g, 'lang', 'en'), _=lambda key: _(key, getattr(g, 'lang', 'en')), LANGUAGES=LANGUAGES, ad=AD_CONFIG)
 
 @app.before_request
 def load_user():

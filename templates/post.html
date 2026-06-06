@@ -43,6 +43,10 @@
     </div>
 </article>
 
+{% with slot='in-content', slot_id='1234567893' %}
+    {% include '_ad.html' %}
+{% endwith %}
+
 <section class="comments-section">
     <h2>💬 {{ _('post.comments_title') }} ({{ comments|length }})</h2>
 

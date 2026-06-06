@@ -45,6 +45,10 @@
 </div>
 {% endif %}
 
+{% with slot='banner', slot_id='1234567891' %}
+    {% include '_ad.html' %}
+{% endwith %}
+
 <div class="layout">
     <div class="main">
         {% if posts %}
@@ -86,6 +90,9 @@
                 </div>
             {% endfor %}
         </div>
+        {% with slot='sidebar', slot_id='1234567892' %}
+            {% include '_ad.html' %}
+        {% endwith %}
         <div class="widget">
             <h3>🏆 {{ _('contributors.title') }}</h3>
             {% for u in top_users %}
