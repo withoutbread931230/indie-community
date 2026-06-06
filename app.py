@@ -313,10 +313,6 @@ def init_db():
                     created_at TEXT NOT NULL
                 )
             ''')
-            try:
-                cur.execute('ALTER TABLE posts ADD COLUMN IF NOT EXISTS cover_url TEXT DEFAULT \'\'')
-            except Exception:
-                pass
     else:
         import sqlite3
         db.executescript('''
@@ -347,11 +343,6 @@ def init_db():
             );
         ''')
         db.commit()
-        try:
-            db.execute('ALTER TABLE posts ADD COLUMN cover_url TEXT DEFAULT \'\'')
-            db.commit()
-        except Exception:
-            pass
 
 def seed_data():
     existing = query_db('SELECT COUNT(*) as cnt FROM posts')
@@ -373,7 +364,11 @@ def seed_data():
 
 with app.app_context():
     init_db()
-    seed_data()
+    try:
+        seed_data()
+    except Exception as e:
+        import sys
+        print(f'Seed data error (non-fatal): {e}', file=sys.stderr)
 
 def now():
     return datetime.utcnow().isoformat() + 'Z'
