@@ -523,7 +523,7 @@ def init_db():
         db.commit()
 
 def seed_data():
-    existing = query_db('SELECT COUNT(*) as cnt FROM posts')
+    existing = query_db('SELECT COUNT(*) as cnt FROM posts', one=True)
     if existing and existing['cnt'] > 3:
         first = query_db('SELECT title FROM posts ORDER BY id ASC LIMIT 1', one=True)
         if first and 'Beginner' in first['title']:
