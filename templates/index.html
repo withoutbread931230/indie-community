@@ -1,40 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}GameGuide Hub — Game Walkthroughs, Tips & Community Guides{% endblock %}
+{% block title %}CS2 Guide Hub — Cities: Skylines 2 Guides & Community{% endblock %}
 {% block content %}
 
 <div class="hero">
-    <div class="hero-badge">🔥 Featured: Cities: Skylines 2 Week</div>
-    <h1>Level Up Your <span>Game</span></h1>
-    <p>Community-driven guides, walkthroughs, and tips for the games you love</p>
+    <div class="hero-badge">🏙️ Cities: Skylines 2</div>
+    <h1>Everything You Need to <span>Build Better Cities</span></h1>
+    <p>Community-driven guides, traffic tips, mod recommendations, and city-building wisdom for CS2</p>
     <form class="search-bar" method="GET">
         <input type="text" name="q" placeholder="Search guides..." value="{{ search }}">
         <button type="submit">Search</button>
     </form>
 </div>
-
-{% if cs2_posts %}
-<div class="featured-section">
-    <div class="featured-header">
-        <div class="featured-icon">🏙️</div>
-        <div>
-            <h2>Cities: Skylines 2 <span>Guide Collection</span></h2>
-            <p>Master city-building with our community's best CS2 guides</p>
-        </div>
-    </div>
-    <div class="featured-grid">
-        {% for post in cs2_posts %}
-        <a href="{{ url_for('view_post', post_id=post['id']) }}" class="featured-card" style="background: linear-gradient(135deg, #0f1a2e 0%, #1a3050 100%);">
-            <div class="featured-card-badge">🏙️ CS2</div>
-            <h3>{{ post['title'] }}</h3>
-            <div class="featured-card-meta">
-                <span>by {{ post['username'] }}</span>
-                <span>{{ post['comment_count'] }} comments</span>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
-</div>
-{% endif %}
 
 <div class="cat-pills">
     <a href="{{ url_for('index') }}" class="cat-pill {% if not selected_category %}active{% endif %}">All</a>
@@ -68,7 +44,7 @@
             </div>
         {% else %}
             <div class="empty-state">
-                <div class="emoji">🎮</div>
+                <div class="emoji">🏙️</div>
                 <p>No guides yet{% if search %} matching "{{ search }}"{% endif %}{% if selected_category %} in {{ selected_category }}{% endif %}.</p>
                 <p><a href="{{ url_for('new_post') }}">Write the first guide!</a></p>
             </div>
@@ -77,15 +53,10 @@
 
     <div class="sidebar">
         <div class="widget">
-            <h3>🔥 Popular Games</h3>
-            {% for game in games %}
-                <div class="game-row">
-                    <div class="game-icon" style="background: {{ game.color }}20; border-color: {{ game.color }}40;">
-                        {{ game.icon }}
-                    </div>
-                    <div class="game-info">
-                        <strong>{{ game.name }}</strong>
-                    </div>
+            <h3>📊 Categories</h3>
+            {% for cat in categories %}
+                <div class="user-row">
+                    <a href="{{ url_for('index', category=cat) }}" style="font-size:13px;">{{ get_category_icon(cat) }} {{ cat }}</a>
                 </div>
             {% endfor %}
         </div>
@@ -102,12 +73,13 @@
             {% endfor %}
         </div>
         <div class="widget">
-            <h3>📂 Categories</h3>
-            {% for cat in categories %}
-                <div class="user-row">
-                    <a href="{{ url_for('index', category=cat) }}" style="font-size:13px;">{{ get_category_icon(cat) }} {{ cat }}</a>
-                </div>
-            {% endfor %}
+            <h3>💡 Quick Tips</h3>
+            <div style="font-size:13px;color:#8090b0;line-height:1.7;">
+                <p style="margin-bottom:8px;">• Use road hierarchy to solve traffic</p>
+                <p style="margin-bottom:8px;">• Build transit before traffic gets bad</p>
+                <p style="margin-bottom:8px;">• Lower service budgets early to save money</p>
+                <p>• Place parks every 4-5 blocks for happy citizens</p>
+            </div>
         </div>
     </div>
 </div>

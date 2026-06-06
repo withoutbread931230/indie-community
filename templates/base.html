@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}GameGuide Hub{% endblock %}</title>
+    <title>{% block title %}CS2 Guide Hub{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
 <body>
     <nav class="topbar">
         <div class="topbar-inner">
-            <a href="{{ url_for('index') }}" class="logo">🎮 GameGuide <span>Hub</span></a>
+            <a href="{{ url_for('index') }}" class="logo">🏙️ CS2 <span>Guide Hub</span></a>
             <div class="nav-links">
                 <a href="{{ url_for('index') }}">Home</a>
                 <a href="{{ url_for('new_post') }}">Write Guide</a>

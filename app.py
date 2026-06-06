@@ -13,233 +13,411 @@ if DATABASE_URL:
     import psycopg2.extras
 
 CATEGORIES = [
-    'General Guides', 'Tips & Tricks', 'Walkthroughs',
-    'Mods & Modding', 'Cities: Skylines 2', 'Showcase', 'Discussion'
+    'Getting Started', 'City Planning', 'Traffic & Transit',
+    'Mods & Modding', 'Tips & Tricks', 'Guides & Walkthroughs', 'Showcase'
 ]
 
 CATEGORY_ICONS = {
-    'General Guides': '📖',
-    'Tips & Tricks': '💡',
-    'Walkthroughs': '🗺️',
+    'Getting Started': '🚀',
+    'City Planning': '🏗️',
+    'Traffic & Transit': '🚇',
     'Mods & Modding': '🔧',
-    'Cities: Skylines 2': '🏙️',
-    'Showcase': '🎮',
-    'Discussion': '💬',
+    'Tips & Tricks': '💡',
+    'Guides & Walkthroughs': '📖',
+    'Showcase': '🏙️',
 }
-
-GAMES = [
-    {'name': 'Cities: Skylines 2', 'icon': '🏙️', 'color': '#4a90d9', 'slug': 'cities-skylines-2'},
-    {'name': 'Baldur\'s Gate 3', 'icon': '⚔️', 'color': '#c43a31', 'slug': 'baldurs-gate-3'},
-    {'name': 'Elden Ring', 'icon': '🗡️', 'color': '#8b7355', 'slug': 'elden-ring'},
-    {'name': 'Stardew Valley', 'icon': '🌾', 'color': '#5b8c5a', 'slug': 'stardew-valley'},
-    {'name': 'Cyberpunk 2077', 'icon': '🔷', 'color': '#ff6b35', 'slug': 'cyberpunk-2077'},
-    {'name': 'Hollow Knight', 'icon': '🐞', 'color': '#5a4a7a', 'slug': 'hollow-knight'},
-]
 
 SEED_POSTS = [
     {
-        'title': 'Cities: Skylines 2 — Beginner\'s Guide to Building Your First City',
+        'title': 'Cities: Skylines 2 Beginner\'s Guide — Build Your First City',
         'content': (
-            'Starting your first city in Cities: Skylines 2 can be overwhelming. Here\'s a step-by-step guide to get you started on the right foot.\n\n'
+            'Starting your first city in Cities: Skylines 2 can be overwhelming. Here\'s a complete step-by-step guide.\n\n'
             '## 1. Choose Your Map Wisely\n'
-            'Start with a temperate map like \"Windy Fjords\" or \"Great Highlands\". These have balanced resources and forgiving terrain. Avoid maps with extreme mountains or limited water access for your first playthrough.\n\n'
+            'Start with a temperate map like "Windy Fjords" or "Great Highlands". These have balanced resources and forgiving terrain. Avoid maps with extreme mountains or limited water access.\n\n'
             '## 2. Road Hierarchy is Everything\n'
-            'The single most important concept in CS2 is road hierarchy. Always plan your roads in layers:\n'
-            '- Highways (6 lanes) for long-distance connections\n'
-            '- Arterial roads (4 lanes) connecting districts\n'
-            '- Collector roads (2 lanes) distributing local traffic\n'
-            '- Local roads for residential zones\n\n'
+            'The single most important concept in CS2 is road hierarchy. Plan your roads in layers:\n'
+            '- **Highways** (6 lanes) for long-distance connections\n'
+            '- **Arterial roads** (4 lanes) connecting districts\n'
+            '- **Collector roads** (2 lanes) distributing local traffic\n'
+            '- **Local roads** for residential zones\n\n'
             '## 3. Zone Smart, Not Fast\n'
-            'Don\'t zone everything at once. Start with a small residential block, add basic services (water, power, sewage), and let the city grow organically. Watch your demand bars — they tell you exactly what your city needs.\n\n'
-            '## 4. Manage Budget Early\n'
-            'Lower your service budgets to 50% at the start. You don\'t need full funding for schools and hospitals when your population is under 500. Increase gradually as your city grows.\n\n'
-            '## 5. Embrace Public Transit Early\n'
-            'Even a small bus route connecting residential to industrial zones will dramatically reduce traffic. Upgrade to trams and metro as your city expands.\n\n'
+            'Start with a small residential block, add basic services (water, power, sewage), and let the city grow organically. Watch your demand bars.\n\n'
+            '## 4. Manage Your Budget\n'
+            'Lower service budgets to 50% at the start. Increase gradually as your city grows. Don\'t overbuild services.\n\n'
+            '## 5. Public Transit Early\n'
+            'Even a single bus route connecting residential to industrial zones dramatically reduces traffic. Add trams and metro as you expand.\n\n'
             'Remember: every great city started with a single road. Take your time and enjoy the process!'
         ),
-        'category': 'Cities: Skylines 2',
+        'category': 'Getting Started',
         'username': 'CityPlanner',
-        'cover_url': 'https://picsum.photos/seed/cs2-beginner/800/400',
+        'cover_url': 'https://picsum.photos/seed/cs2-guide1/800/400',
+        'days_ago': 1,
+    },
+    {
+        'title': 'Advanced Road Hierarchy — Traffic Management Masterclass',
+        'content': (
+            'Traffic is the #1 challenge in CS2. Master these techniques to keep your city flowing.\n\n'
+            '## The Root Cause\n'
+            'Most traffic jams happen at intersections. Every stop creates a ripple effect. Minimize intersections.\n\n'
+            '## Roundabouts: Your Best Friend\n'
+            'A well-designed roundabout handles 3x more traffic than a signaled intersection:\n'
+            '- Keep them small (3-4 cells radius)\n'
+            '- Never place intersections too close to a roundabout\n'
+            '- Use highway ramps for high-traffic connections\n\n'
+            '## Diverging Diamond Interchanges\n'
+            'For highway-to-highway connections, DDIs are the most efficient. They eliminate left-turn conflicts entirely.\n\n'
+            '## One-Way Pair Systems\n'
+            'For dense downtown areas, pair two one-way streets running opposite directions. This doubles throughput vs two-way streets.\n\n'
+            '## Road Hierarchy in Practice\n'
+            'Think of it like the human body:\n'
+            '- Highways = arteries (high speed, high volume)\n'
+            '- Arterial roads = veins (connect neighborhoods)\n'
+            '- Local roads = capillaries (slow, local only)\n\n'
+            '## Mods That Help\n'
+            'Traffic Manager lets you customize lane arrows, create timed traffic lights, and set speed limits per road segment.'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'TrafficGuru',
+        'cover_url': 'https://picsum.photos/seed/cs2-traffic/800/400',
         'days_ago': 2,
     },
     {
-        'title': 'Top 15 Must-Have Mods for Cities: Skylines 2 (2026)',
+        'title': 'Complete Public Transit Guide — Buses, Trams, Metro & Trains',
         'content': (
-            'The CS2 modding scene has exploded. Here are the mods you absolutely need:\n\n'
-            '## Essential Gameplay Mods\n'
-            '**1. Traffic Manager** — The gold standard for traffic control. Custom lane arrows, speed limits, and timed traffic lights give you pixel-perfect control over your road network.\n\n'
-            '**2. Move It!** — Fine-tune every building, road, and prop. Perfect for fixing those awkward zoning alignments.\n\n'
-            '**3. Fine Road Anarchy** — Place roads anywhere, at any angle. No more snapping frustrations.\n\n'
-            '## Visual Enhancement Mods\n'
-            '**4. Render It!** — Lumen-based global illumination for jaw-dropping visuals. A must for screenshot enthusiasts.\n\n'
-            '**5. Ultimate Level of Detail (ULOD)** — Push LOD distances beyond vanilla limits for crisp visuals.\n\n'
-            '## Quality of Life Mods\n'
-            '**6. 81 Tiles 2** — Unlock the entire map for building.\n'
-            '**7. Demand Master** — Fine-tune RCI demand to your liking.\n'
-            '**8. Better Bulldozer** — Delete multiple items at once with custom brush sizes.\n\n'
-            '## Performance Mods\n'
-            '**9. FPS Booster** — Disables unnecessary rendering for smoother gameplay.\n'
-            '**10. Render Limits Toggle** — Adjust simulation and rendering distances based on your hardware.\n\n'
-            'All mods are available on Paradox Mods and Thunderstore. Always check compatibility before installing!'
+            'Public transit is the backbone of any successful CS2 city. Here\'s how to build a system that works.\n\n'
+            '## Bus Networks (The Foundation)\n'
+            'Buses are your cheapest and most flexible option:\n'
+            '- Create circular routes, not point-to-point\n'
+            '- Keep stops 2-3 blocks apart\n'
+            '- Use bus lanes on busy roads for efficiency\n'
+            '- Connect residential areas to transit hubs\n\n'
+            '## Trams (Mid-Capacity)\n'
+            'Trams are perfect for medium-density corridors:\n'
+            '- Higher capacity than buses, lower cost than metro\n'
+            '- Best for routes with 2,000-5,000 daily passengers\n'
+            '- Can run in the middle of roads or dedicated tracks\n\n'
+            '## Metro (High Capacity)\n'
+            'For dense urban areas, metro is king:\n'
+            '- Stations should be 8-12 blocks apart\n'
+            '- Place entrances near major landmarks and commercial zones\n'
+            '- A single metro line can remove 500+ cars from roads\n\n'
+            '## Train Networks (Regional)\n'
+            'Trains connect distant parts of your city:\n'
+            '- Use for cargo transport between industrial zones\n'
+            '- Passenger trains for suburban commuters\n'
+            '- Place stations at the edge of dense areas\n\n'
+            '## Pro Tip\n'
+            'Always build transit BEFORE traffic gets bad. Retrofitting is much harder.'
+        ),
+        'category': 'Traffic & Transit',
+        'username': 'TransitFan',
+        'cover_url': 'https://picsum.photos/seed/cs2-transit/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Top 20 Essential Mods for Cities: Skylines 2 (2026)',
+        'content': (
+            'The CS2 modding community has created incredible tools. Here are the absolute must-haves.\n\n'
+            '## Tier 1: Essential (Get These First)\n'
+            '**1. Traffic Manager** — Complete traffic control. Custom lane arrows, speed limits, timed traffic lights.\n'
+            '**2. Move It!** — Fine-tune every building, road, and prop position.\n'
+            '**3. Fine Road Anarchy** — Place roads anywhere, any angle.\n'
+            '**4. Network Multitool** — Create smooth curves and custom intersections.\n\n'
+            '## Tier 2: Visual Enhancement\n'
+            '**5. Render It!** — Lumen-based global illumination for stunning visuals.\n'
+            '**6. Ultimate Level of Detail (ULOD)** — Push LOD distances for crisp views.\n'
+            '**7. Skyve** — Realistic clouds, lighting, and atmosphere.\n'
+            '**8. Theme Mixer** — Customize terrain colors and textures.\n\n'
+            '## Tier 3: Quality of Life\n'
+            '**9. 81 Tiles 2** — Unlock entire map for building.\n'
+            '**10. Demand Master** — Fine-tune RCI demand.\n'
+            '**11. Better Bulldozer** — Delete multiple items with brush sizes.\n'
+            '**12. Find It!** — Search for any asset instantly.\n\n'
+            '## Tier 4: Gameplay Expansion\n'
+            '**13. Plop the Growables** — Manually place any building.\n'
+            '**14. Extra Landscaping Tools** — More terrain sculpting options.\n'
+            '**15. Pedestrian Zone Expansion** — Enhanced walkability mechanics.\n\n'
+            '## Tier 5: Performance\n'
+            '**16. FPS Booster** — Disable unnecessary rendering.\n'
+            '**17. Render Limits Toggle** — Adjust simulation distances.\n'
+            '**18. FPS Limiter** — Cap FPS to reduce GPU load on large cities.\n\n'
+            '## Bonus: Must-Have Packs\n'
+            '**19. European Suburbia Pack** — More realistic suburban buildings.\n'
+            '**20. Japanese City Pack** — Unique Asian architecture.\n\n'
+            'All available on Paradox Mods and Thunderstore. Check compatibility before installing!'
         ),
         'category': 'Mods & Modding',
         'username': 'ModMaster',
         'cover_url': 'https://picsum.photos/seed/cs2-mods/800/400',
-        'days_ago': 3,
+        'days_ago': 2,
     },
     {
-        'title': 'Traffic Engineering 101 — Solving Gridlock in Cities: Skylines 2',
+        'title': 'Zoning Secrets — How to Create Beautiful & Functional Districts',
         'content': (
-            'Traffic is the #1 challenge in CS2. Here\'s how to fix it like a pro.\n\n'
-            '## The Root Cause\n'
-            'Most traffic jams happen at intersections. Every time a car stops at an intersection, it creates a ripple effect. The solution? Minimize intersections and optimize those you can\'t remove.\n\n'
-            '## Roundabouts: Your Best Friend\n'
-            'A well-designed roundabout handles 3x more traffic than a signaled intersection. Key rules:\n'
-            '- Keep them small (3-4 cells radius)\n'
-            '- Never place intersections too close to the roundabout\n'
-            '- Use highway ramps for high-traffic connections\n\n'
-            '## Road Hierarchy in Practice\n'
-            'Your city needs clear traffic arteries. Think of it like the human body:\n'
-            '- Highways = arteries (high speed, high volume)\n'
-            '- Arterial roads = veins (connect neighborhoods)\n'
-            '- Local roads = capillaries (slow, local only)\n\n'
-            '## Public Transit is Not Optional\n'
-            'A single metro line can remove 500+ cars from your roads. Always build transit BEFORE traffic gets bad — it\'s much harder to retrofit.\n\n'
-            '## Mods That Help\n'
-            'Traffic Manager (TM) lets you customize lane arrows, create timed traffic lights, and set speed limits per road segment. Game-changing.'
+            'Great cities aren\'t just functional — they\'re beautiful. Here\'s how to zone like a pro.\n\n'
+            '## Understanding Zone Types\n'
+            '**Low Density Residential** — Single-family homes, generates less traffic but lower population.\n'
+            '**Medium Density Residential** — Townhouses and small apartments, good balance.\n'
+            '**High Density Residential** — Skyscrapers, high population but heavy traffic.\n\n'
+            '## The Mixed-Use Approach\n'
+            'Don\'t separate residential and commercial completely. Small shops scattered through residential areas:\n'
+            '- Reduces commute distances\n'
+            '- Creates walkable neighborhoods\n'
+            '- Increases property values\n\n'
+            '## Grid vs Organic\n'
+            'Both work, but each has trade-offs:\n'
+            '- **Grid**: Easy to zone, efficient traffic, but can look boring\n'
+            '- **Organic**: Beautiful natural look, but harder to manage\n'
+            '- **Best approach**: Grid for downtown, organic for suburbs\n\n'
+            '## District Specialization\n'
+            'Use district policies to shape neighborhoods:\n'
+            '- **High-Tech Zone**: Boosts office efficiency\n'
+            '- **Tourism District**: Hotels and attractions flourish\n'
+            '- **Pedestrian Zone**: No cars, walking and cycling only\n\n'
+            '## Green Spaces\n'
+            'Parks and plazas aren\'t decorative — they boost land value and citizen happiness. Place a small park every 4-5 blocks.'
         ),
-        'category': 'Cities: Skylines 2',
-        'username': 'TrafficGuru',
-        'cover_url': 'https://picsum.photos/seed/cs2-traffic/800/400',
-        'days_ago': 5,
-    },
-    {
-        'title': 'Stardew Valley — Complete Year 1 Guide (Spring)',
-        'content': (
-            'Maximize your first spring in Stardew Valley with this day-by-day guide.\n\n'
-            '## Day 1-5: The Grind\n'
-            '- Clear exactly 50-100 tiles of your farm for planting\n'
-            '- Visit Pierre\'s to buy parsnip seeds (15-20 is plenty)\n'
-            '- Explore the town and meet everyone (gifts matter!)\n'
-            '- Fish at the mountain lake for easy money\n\n'
-            '## Day 6-12: First Profits\n'
-            '- Your parsnips should be ready by day 6-7\n'
-            '- Save 2,000g for strawberry seeds at the Egg Festival (day 13)\n'
-            '- Upgrade your backpack at Pierre\'s ASAP\n'
-            '- Start mining in the mountain cave for copper ore\n\n'
-            '## Day 13-20: Egg Festival & Expansion\n'
-            '- BUY STRAWBERRIES. Plant them the same day.\n'
-            '- With speed-gro fertilizer, you get 2 harvests before summer\n'
-            '- Continue mining to reach floor 40+ for iron ore\n\n'
-            '## Day 21-28: Pre-Summer Prep\n'
-            '- Save at least 5,000g for summer seeds\n'
-            '- Build a silo if you have animals (4000g, 100 stone, 10 clay, 5 copper)\n'
-            '- Stockpile wood and stone — you\'ll need them\n\n'
-            'Pro tip: check the TV every day for luck forecasts and recipes!'
-        ),
-        'category': 'Walkthroughs',
-        'username': 'FarmHand',
-        'cover_url': 'https://picsum.photos/seed/stardew/800/400',
+        'category': 'City Planning',
+        'username': 'UrbanDesigner',
+        'cover_url': 'https://picsum.photos/seed/cs2-zoning/800/400',
         'days_ago': 4,
     },
     {
-        'title': 'Elden Ring — 10 Tips That Make the Game Actually Fun',
+        'title': 'Water, Power & Sewage — Utility Management Guide',
         'content': (
-            'Elden Ring doesn\'t hold your hand. Here\'s what I wish I knew before starting.\n\n'
-            '## 1. Vigor is Non-Negotiable\n'
-            'Level VIGOR to at least 30 before touching any other stat much. More HP means more mistakes you can learn from.\n\n'
-            '## 2. Explore Limgrave Thoroughly\n'
-            'The starting area is packed with upgrade materials, flask upgrades, and useful talismans. Don\'t rush to Stormveil Castle — explore every cave and ruin first.\n\n'
-            '## 3. Use Ashes of War\n'
-            'They\'re not just weapon arts — they let you change your weapon\'s scaling and damage type. A \"Heavy\" affinity turns a DEX weapon into a STR weapon.\n\n'
-            '## 4. Level Your Weapon, Not Just Your Character\n'
-            'Weapon upgrades matter more than stat points early on. Explore mines (marked with orange circles on the map) for smithing stones.\n\n'
-            '## 5. Spirit Ashes Are Your Friend\n'
-            'The Lone Wolf Ashes you get early can carry you through tough bosses. Don\'t be proud — use them.\n\n'
-            '## 6. Read Item Descriptions\n'
-            'Almost every piece of lore and many gameplay hints are hidden in item descriptions. Your map even has guidance!\n\n'
-            '## 7. Don\'t Kill NPCs\n'
-            'Really. Just don\'t. You\'ll lock yourself out of quests and gear.\n\n'
-            '## 8. Use Guard Counters\n'
-            'Block an attack and immediately heavy attack for a powerful counter. This breaks enemy stance quickly.\n\n'
-            '## 9. Torrent Can Double Jump\n'
-            'Yes, your spectral steed can double jump. This makes exploring much easier.\n\n'
-            '## 10. Death is Progress\n'
-            'You will die. A lot. Every death teaches you something. Embrace it.'
+            'Keeping your city running requires careful utility planning. Here\'s everything you need to know.\n\n'
+            '## Power Generation\n'
+            '**Early Game:** Wind turbines are cheap but unreliable. Use coal plants for steady base load.\n'
+            '**Mid Game:** Solar and geothermal are clean but expensive. Gas plants offer good balance.\n'
+            '**Late Game:** Nuclear plants provide massive power. Place them far from residential zones.\n\n'
+            '## Water Systems\n'
+            '**Fresh Water:** Place water intake pumps upstream from sewage outlets. Never mix them.\n'
+            '**Ground Water:** Water towers work for small towns but can deplete.\n'
+            '**Water Treatment:** Build treatment plants to reduce pollution.\n\n'
+            '## Sewage Management\n'
+            '- Place sewage outlets downstream from water intakes\n'
+            '- Use water treatment plants to reduce pollution\n'
+            '- Inland cities need treatment plants — ocean outlets aren\'t an option\n\n'
+            '## Heating\n'
+            'CS2 adds heating as a core service. Geothermal plants provide both power and heat. Run heating pipes under roads.\n\n'
+            '## Pro Tips\n'
+            '- Keep 20-30% extra capacity for growth\n'
+            '- Spread power sources across the map (prevents blackouts)\n'
+            '- Use the info views to spot coverage gaps\n'
+            '- Upgrade utility buildings when available'
         ),
-        'category': 'Tips & Tricks',
-        'username': 'TarnishedOne',
-        'cover_url': 'https://picsum.photos/seed/eldenring/800/400',
+        'category': 'Getting Started',
+        'username': 'UtilityPro',
+        'cover_url': 'https://picsum.photos/seed/cs2-utilities/800/400',
+        'days_ago': 3,
+    },
+    {
+        'title': 'Economy & Budget Mastery — From Deficit to Surplus',
+        'content': (
+            'Struggling with your city\'s budget? Here\'s how to build a thriving economy.\n\n'
+            '## Starting Out: The Deficit Phase\n'
+            'Every city starts in debt. That\'s normal. Key strategies:\n'
+            '- Take the maximum starting loan (it\'s worth it)\n'
+            '- Set service budgets to 50% for the first 1,000 population\n'
+            '- Focus on residential zoning to grow your tax base\n\n'
+            '## Tax Optimization\n'
+            'Default 9% tax rate is good, but you can optimize:\n'
+            '- Lowers taxes (7-8%) for residential to attract families\n'
+            '- Higher taxes (10-11%) for industrial — they\'ll pay\n'
+            '- Adjust individual tax rates based on demand\n\n'
+            '## Industrial Strategy\n'
+            'Industry is your main early-game revenue source:\n'
+            '- Specialize industry for bonus income (Oil, Ore, Farming)\n'
+            '- Office zones generate high tax revenue with fewer services\n'
+            '- Upgrade to IT Cluster when possible\n\n'
+            '## Budget Management\n'
+            '- **Education**: Keep at 50% until population > 2,000\n'
+            '- **Healthcare**: Small clinic is enough for 3,000 people\n'
+            '- **Police/Fire**: One station covers a surprising area\n'
+            '- **Roads**: Only upgrade to higher capacity when traffic demands it\n\n'
+            '## When to Expand\n'
+            'Don\'t expand until:\n'
+            '- Your budget is positive for 5+ consecutive months\n'
+            '- You have 20%+ spare capacity in all services\n'
+            '- Your population demand is 75%+ full\n\n'
+            'A balanced budget is the foundation of a great city!'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'Economist',
+        'cover_url': 'https://picsum.photos/seed/cs2-economy/800/400',
+        'days_ago': 5,
+    },
+    {
+        'title': 'Building Realistic Cities — Detailed Guide for Perfectionists',
+        'content': (
+            'Want your city to look like the real thing? Here\'s how the pros do it.\n\n'
+            '## Start with a Master Plan\n'
+            'Before placing your first road, sketch your city layout:\n'
+            '- Downtown core near the highway entrance\n'
+            '- Industrial zones downwind from residential\n'
+            '- Transit corridors following natural terrain\n\n'
+            '## Gradual Density Transition\n'
+            'Real cities don\'t jump from skyscrapers to farms. Transition gradually:\n'
+            '- **Core**: High-density commercial + residential\n'
+            '- **Inner ring**: Medium-density mixed use\n'
+            '- **Middle ring**: Low-density residential + schools\n'
+            '- **Outer ring**: Farms, forestry, rural living\n\n'
+            '## Terrain Following\n'
+            'Don\'t flatten everything. Roads that follow contours look more natural:\n'
+            '- Use "Snap to Terrain" for roads on hills\n'
+            '- Terrace steep slopes with retaining walls\n'
+            '- Place water features at valley bottoms\n\n'
+            '## Detail at Scale\n'
+            'The best cities look good at every zoom level:\n'
+            '- **Macro**: Clear district boundaries and green belts\n'
+            '- **Meso**: Consistent building heights in each zone\n'
+            '- **Micro**: Park benches, trees, pedestrian paths\n\n'
+            '## Use Real-World References\n'
+            'Study Google Maps of real cities. Notice how they handle:\n'
+            '- Highway interchanges and exit spacing\n'
+            '- Downtown grid patterns vs suburban cul-de-sacs\n'
+            '- The relationship between parks and density\n\n'
+            'Patience is key — great cities take time to build!'
+        ),
+        'category': 'City Planning',
+        'username': 'UrbanDesigner',
+        'cover_url': 'https://picsum.photos/seed/cs2-realistic/800/400',
         'days_ago': 6,
     },
     {
-        'title': 'Baldur\'s Gate 3 — Top 5 Most Powerful Class Builds',
+        'title': 'Pollution & Environment — How to Build a Green City',
         'content': (
-            'Whether you\'re a veteran or a newcomer, these builds will carry you through Tactician mode.\n\n'
-            '## 1. Sorlock (Sorcerer 10 / Warlock 2)\n'
-            'The quintessential blaster. Quickened Eldritch Blast with Agonizing Blast deals insane damage. Combine with Haste for 6-9 beams per turn. Race: Half-Elf for bonus movement.\n\n'
-            '## 2. Open Hand Monk 9 / Thief 3\n'
-            'With 3 bonus actions per turn (Thief\'s Fast Hands + Monk\'s Wholeness of Body), you\'re a blender. Tavern Brawler feat + STR elixirs = each punch hits for 20+ damage.\n\n'
-            '## 3. Battle Master 12\n'
-            'Simple but devastating. Great Weapon Master + Sentinel + Polearm Master. Trip Attack into Action Surge is a delete button. Race: Wood Half-Elf for movement.\n\n'
-            '## 4. Light Cleric 12\n'
-            'Best support in the game. Warding Flare protects allies, Spirit Guardians melts groups, and Radiance of the Dawn is an AoE nuke. Gear for CON saves to maintain concentration.\n\n'
-            '## 5. Gloom Stalker 5 / Assassin 3 / Battle Master 4\n'
-            'The first-round killer. 6+ attacks on turn 1 with insane initiative. Guaranteed crits on surprised enemies. Perfect for initiating every fight.\n\n'
-            'All builds work on Balanced and Tactician. Honour Mode requires extra caution regardless of build!'
+            'Keep your citizens healthy and your environment clean with these strategies.\n\n'
+            '## Understanding Pollution Types\n'
+            '**Ground Pollution**: Caused by industry, garbage, and sewage. Spreads through soil and water.\n'
+            '**Noise Pollution**: From roads, trains, and commercial zones. Reduces land value nearby.\n'
+            '**Air Pollution**: From industrial zones and heavy traffic. Causes citizen sickness.\n\n'
+            '## Zoning for Clean Air\n'
+            'Always place industrial zones DOWNWIND from residential (check wind direction in info view):\n'
+            '- Create a buffer of offices or trees between industry and homes\n'
+            '- Use the "Green Industry" policy to reduce pollution\n'
+            '- Encourage electric vehicle usage with policies\n\n'
+            '## Waste Management\n'
+            '- Landfills are cheap but pollute. Place them far from residential\n'
+            '- Incineration plants burn garbage and generate power\n'
+            '- Recycling centers reduce total waste output\n'
+            '- Upgrade to modern waste处理 facilities as soon as possible\n\n'
+            '## Green Energy\n'
+            '- Solar, wind, and geothermal produce zero pollution\n'
+            '- Nuclear is clean but has risks if not maintained\n'
+            '- Use the "Green Cities" policy pack for eco-friendly buildings\n\n'
+            '## Bonus: The Forest City\n'
+            'Plant trees everywhere — along roads, in medians, around buildings. Trees significantly reduce both noise and air pollution. A well-forested city can have 30% lower pollution levels.'
         ),
-        'category': 'Walkthroughs',
-        'username': 'DungeonDelver',
-        'cover_url': 'https://picsum.photos/seed/bg3/800/400',
+        'category': 'Tips & Tricks',
+        'username': 'EcoBuilder',
+        'cover_url': 'https://picsum.photos/seed/cs2-green/800/400',
+        'days_ago': 4,
+    },
+    {
+        'title': 'Signature Buildings & Unique Factories — Complete Collection Guide',
+        'content': (
+            'Signature buildings provide unique bonuses. Here\'s every one you need.\n\n'
+            '## How Signature Buildings Work\n'
+            'Unlocked by reaching specific milestones or meeting requirements:\n'
+            '- Each provides unique city-wide or local bonuses\n'
+            '- Some require specific unique factories or resources\n'
+            '- Placement matters — some affect only their district\n\n'
+            '## Top 10 Must-Get Signature Buildings\n\n'
+            '**1. Space Elevator** — Massive tourism boost, requires high population\n'
+            '**2. Grand Central Terminal** — Major transit hub, connects all rail lines\n'
+            '**3. Medical Research Center** — Boosts healthcare efficiency city-wide\n'
+            '**4. International Airport** — Tourism + cargo, requires 50k+ population\n'
+            '**5. Opera House** — Entertainment + land value boost\n'
+            '**6. Smart Highway** — Automated highway with higher speed limits\n'
+            '**7. Geothermal Power Plant** — Unlimited clean energy\n'
+            '**8. TV Tower** — Entertainment + unique visual landmark\n'
+            '**9. National Park** — Tourism + environment boost\n'
+            '**10. Stock Exchange** — Major economic boost for office zones\n\n'
+            '## Unique Factories\n'
+            'Special industrial buildings that produce unique goods:\n'
+            '- **Lemonade Factory**: Requires fruit resources\n'
+            '- **Car Manufacturer**: Requires metal + oil\n'
+            '- **Electronics Factory**: Requires rare resources\n'
+            '- **Clothing Manufacturer**: Requires fiber resources\n\n'
+            'Plan your industry around the unique factories available on your map!'
+        ),
+        'category': 'Guides & Walkthroughs',
+        'username': 'LandmarkHunter',
+        'cover_url': 'https://picsum.photos/seed/cs2-landmarks/800/400',
         'days_ago': 7,
     },
     {
-        'title': 'Cyberpunk 2077 2.2 — Best Cyberware Loadout for Each Playstyle',
+        'title': 'Map Selection Guide — Best Maps for Every Playstyle',
         'content': (
-            'With the 2.2 update, cyberware choices matter more than ever. Here\'s what to equip for each build.\n\n'
-            '## Sandevistan Build (Slow-Mo Melee)\n'
-            '- **Axolotl** (Frontal Cortex): Resets Sandevistan cooldown on kills\n'
-            '- **Apogee Sandevistan** (Nervous System): Best in slot, 85% slow\n'
-            '- **Microrotors** (Hands): +30% attack speed\n'
-            '- **Lynx Paws** (Legs): Silent movement for stealth approach\n\n'
-            '## Netrunner Build (Quickhacks Only)\n'
-            '- **Tetratronic Rippler** (Operating System): Hacks spread between enemies\n'
-            '- **Bioconductors** (Frontal Cortex): +4 RAM capacity\n'
-            '- **Synaptic Accelerator** (Nervous System): Slow time when detected\n'
-            '- **Smart Link** (Hands): Smart weapon synergy\n\n'
-            '## Berserk Build (Shotgun/Melee Tank)\n'
-            '- **Berserk** (Operating System): Health regen + damage reduction\n'
-            '- **Universal Booster** (Frontal Cortex): Health item efficiency\n'
-            '- **Microgenerator** (Hands): Electric damage on reload\n'
-            '- **Fortified Ankles** (Legs): Superhero landing\n\n'
-            'Remember to visit Ripperdocs in Dogtown for the best iconic chrome!'
+            'The right map makes all the difference. Here\'s a breakdown of every map type.\n\n'
+            '## Temperate Maps (Best for Beginners)\n'
+            '**Windy Fjords** — Balanced resources, flat terrain near water. Perfect for first city.\n'
+            '**Great Highlands** — Mix of flat and hilly terrain. Good for learning road hierarchy.\n'
+            '**Emerald Lake** — Large lake in center, great for waterfront builds.\n\n'
+            '## Coastal Maps\n'
+            '**Azure Gulf** — Beautiful coastline, limited inland space.\n'
+            '**Coral Islands** — Archipelago, requires bridges and ferries.\n'
+            '**Sandy Shores** — Beachfront, tourism-focused gameplay.\n\n'
+            '## Mountain Maps (Advanced)\n'
+            '**Alpine Valley** — Steep terrain, terraced building required.\n'
+            '**Canyon Cliffs** — Very challenging, limited flat land.\n'
+            '**Snowy Peaks** — Winter map, heating is critical.\n\n'
+            '## River Maps\n'
+            '**Delta Plains** — Multiple river branches, great for canals.\n'
+            '**Meander River** — Single large river, natural division.\n'
+            '**Creek Crossing** — Small streams, easy water management.\n\n'
+            '## Resource-Focused Maps\n'
+            '**Mineral Ridge** — Rich in ore and coal. Heavy industry paradise.\n'
+            '**Fertile Valley** — Abundant farming resources.\n'
+            '**Timberland** — Vast forests for forestry industry.\n\n'
+            '## Pro Tip\n'
+            'Check the resource map overlay before placing your first road. Building near your primary resource saves massive transit costs later!'
         ),
-        'category': 'General Guides',
-        'username': 'NetRunnerX',
-        'cover_url': 'https://picsum.photos/seed/cyberpunk/800/400',
-        'days_ago': 8,
+        'category': 'Getting Started',
+        'username': 'MapExplorer',
+        'cover_url': 'https://picsum.photos/seed/cs2-maps/800/400',
+        'days_ago': 6,
     },
     {
-        'title': 'Hollow Knight — Hidden Secrets You Probably Missed',
+        'title': 'Pedestrian & Cycling Infrastructure — Walkable Cities Guide',
         'content': (
-            'Hallownest is full of secrets. Here are the ones most players never find.\n\n'
-            '## The Abyss Creature\n'
-            'After getting Void Heart, return to the Abyss and swim to the bottom-left area. You\'ll find a hidden room with a giant creature. Hitting it reveals a secret dialogue with the Hunter.\n\n'
-            '## The Jinn Collector\n'
-            'In the Kingdom\'s Edge, there\'s a hidden room with a ghostly bug called Jinn. She buys your rancid eggs for 1,000 geo each — way better than the regular 250.\n\n'
-            '## Path of Pain\n'
-            'In the White Palace, there\'s a hidden breakable wall near the top of the tower. Breaking it leads to the Path of Pain — the hardest platforming challenge in the game. The reward? A lore cutscene and bragging rights.\n\n'
-            '## Mr. Mushroom\n'
-            'Dream nail the mushroom enemies in Fungal Wastes repeatedly. Each time you do, Mr. Mushroom appears. Follow him through multiple rooms for a secret ending.\n\n'
-            '## The Eternal Ordeal\n'
-            'In the Godhome DLC, hit the ghost in the top-left corner of the main hub. This unlocks the Eternal Ordeal — an endless wave of Zotelings. Survive 57 waves for a unique journal entry.\n\n'
-            '## Grey Prince Zote\n'
-            'If you saved Zote (why would you?), he appears as a boss in Godhome. Each time you beat him, he gets stronger. There are 10 tiers. Good luck.'
+            'The best CS2 cities prioritize people over cars. Here\'s how.\n\n'
+            '## Why Walkability Matters\n'
+            'Walkable cities have:\n'
+            '- Less traffic congestion\n'
+            '- Higher land values\n'
+            '- Healthier, happier citizens\n'
+            '- More vibrant commercial districts\n\n'
+            '## Pedestrian Paths\n'
+            'Connect key areas with dedicated pedestrian paths:\n'
+            '- Shortcuts between cul-de-sacs\n'
+            '- Parks and waterfront connections\n'
+            '- Direct routes from residential to transit stations\n'
+            '- Bridges over busy roads\n\n'
+            '## Pedestrian Zones\n'
+            'Use the district policy to create car-free zones:\n'
+            '- Perfect for historic districts and shopping areas\n'
+            '- Boosts local commercial significantly\n'
+            '- Requires parking lots at zone boundaries\n\n'
+            '## Cycling Infrastructure\n'
+            'Bike lanes are cheap and effective:\n'
+            '- Add bike lanes to all arterial roads\n'
+            '- Create dedicated cycle paths through parks\n'
+            '- Bike parking at every transit station\n'
+            '- Bike-sharing programs for short trips\n\n'
+            '## The 15-Minute City Concept\n'
+            'Design neighborhoods where citizens can access all daily needs within 15 minutes of walking:\n'
+            '- Small grocery stores in every district\n'
+            '- Schools within walking distance\n'
+            '- Parks every 4-5 blocks\n'
+            '- Medical clinics distributed across the city\n\n'
+            'Start with one walkable neighborhood and expand from there!'
         ),
-        'category': 'Tips & Tricks',
-        'username': 'BugHunter',
-        'cover_url': 'https://picsum.photos/seed/hollowknight/800/400',
-        'days_ago': 10,
+        'category': 'City Planning',
+        'username': 'WalkableCity',
+        'cover_url': 'https://picsum.photos/seed/cs2-walkable/800/400',
+        'days_ago': 8,
     },
 ]
 
@@ -346,8 +524,12 @@ def init_db():
 
 def seed_data():
     existing = query_db('SELECT COUNT(*) as cnt FROM posts')
-    if existing and existing['cnt'] > 0:
+    if existing and existing['cnt'] > 3:
         return
+    if existing and existing['cnt'] > 0:
+        query_db('DELETE FROM comments')
+        query_db('DELETE FROM posts')
+        query_db('DELETE FROM users')
     from datetime import timedelta
     base_time = datetime.utcnow()
     for i, post in enumerate(SEED_POSTS):
@@ -415,12 +597,10 @@ def index():
         GROUP BY u.id ORDER BY post_count DESC LIMIT 5
     ''')
 
-    cs2_posts = [p for p in posts if p['category'] == 'Cities: Skylines 2'][:3] if posts else []
-
     return render_template('index.html', posts=posts, categories=CATEGORIES,
                            get_category_icon=get_category_icon,
                            selected_category=category, search=search,
-                           top_users=top_users, games=GAMES, cs2_posts=cs2_posts)
+                           top_users=top_users)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

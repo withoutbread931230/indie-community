@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Write a Guide — GameGuide Hub{% endblock %}
+{% block title %}Write a Guide — CS2 Guide Hub{% endblock %}
 {% block content %}
 
 <div class="form-card form-card-wide">
     <h1>✍️ Write a Guide</h1>
-    <p class="form-subtitle">Share your gaming knowledge with the community</p>
+    <p class="form-subtitle">Share your city-building knowledge with the community</p>
     <form method="POST">
         <div class="form-group">
             <label>Title</label>
-            <input type="text" name="title" required placeholder="e.g. Cities: Skylines 2 — Beginner's Guide">
+            <input type="text" name="title" required placeholder="e.g. How to Fix Traffic in Downtown Areas">
         </div>
         <div class="form-row">
             <div class="form-group">
@@ -26,7 +26,7 @@
         </div>
         <div class="form-group">
             <label>Content</label>
-            <textarea name="content" required placeholder="Write your guide here... Use ## for headings, - for lists, and **bold** for emphasis."></textarea>
+            <textarea name="content" required placeholder="Share your city-building tips, traffic solutions, mod recommendations..."></textarea>
             <div class="form-hint">💡 Use ## for headings, - for bullet lists, **bold** for emphasis, and blank lines between paragraphs.</div>
         </div>
         <button type="submit" class="submit-btn">Publish Guide</button>
