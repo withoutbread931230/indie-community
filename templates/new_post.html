@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}New Post - IndieDev Hub{% endblock %}
+{% block content %}
+
+<div class="form-card" style="max-width:700px;">
+    <h1>Create a Post</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" required placeholder="e.g. My first game jam experience">
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select name="category">
+                {% for cat in categories %}
+                    <option value="{{ cat }}">{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Content</label>
+            <textarea name="content" required placeholder="Share your thoughts, questions, or showcase your work..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Publish Post</button>
+    </form>
+</div>
+
+{% endblock %}

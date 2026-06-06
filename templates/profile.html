@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}{{ profile_user['username'] }} - IndieDev Hub{% endblock %}
+{% block content %}
+
+<div class="profile-header">
+    <div class="avatar-big">{{ profile_user['username'][0]|upper }}</div>
+    <h1>{{ profile_user['username'] }}</h1>
+    <p class="bio">Member since {{ profile_user['created_at'][:10] }}</p>
+</div>
+
+<h2 style="font-size:16px;color:#aaaac0;margin-bottom:14px;">Posts ({{ posts|length }})</h2>
+
+{% if posts %}
+    <div class="post-list">
+        {% for post in posts %}
+            <div class="post-card">
+                <a href="{{ url_for('view_post', post_id=post['id']) }}" class="title">{{ post['title'] }}</a>
+                <div class="meta">
+                    <span class="cat-tag">{{ post['category'] }}</span>
+                    <span>{{ post['created_at'][:10] }}</span>
+                    <span>{{ post['comment_count'] }} comments</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="empty-state">
+        <div class="emoji">📝</div>
+        <p>No posts yet.</p>
+    </div>
+{% endif %}
+
+{% endblock %}
