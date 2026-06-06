@@ -610,6 +610,12 @@ def index():
                            selected_category=category, search=search,
                            top_users=top_users)
 
+@app.route('/dbcheck')
+def dbcheck():
+    posts = query_db('SELECT p.*, u.username FROM posts p JOIN users u ON p.user_id = u.id ORDER BY p.id')
+    users = query_db('SELECT * FROM users')
+    return f'Posts: {len(posts)} — Users: {len(users)} — First post: {posts[0]["title"] if posts else "None"} — Users: {[u["username"] for u in users]}'
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
