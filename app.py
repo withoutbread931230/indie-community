@@ -34,12 +34,14 @@ def _(key, lang=None):
     return trans.get(key, TRANSLATIONS.get('en', {}).get(key, key))
 
 # Ad Configuration
-# Set AD_MODE=adsense + ADSENSE_CLIENT=ca-pub-xxx for Google AdSense
-# Set AD_MODE=affiliate (default) for CS2 affiliate banners
+# Google AdSense (recommended):
+#   Set AD_MODE=adsense + ADSENSE_CLIENT=ca-pub-xxxxxxxxxxxxxx
+#   Apply at https://adsense.google.com (needs ~50 posts, original content)
+# Humble Bundle / CJ Affiliate:
+#   Set AD_MODE=affiliate + HUMBLE_PARTNER=your_cj_id
+#   Sign up: https://signup.cj.com/member/signup/publisher/?cid=5693148
 # Set AD_MODE=none to disable all ads
-# Set HUMBLE_PARTNER=yourid for Humble Bundle affiliate (recommended, up to 15% commission)
-#   Sign up: https://www.humblebundle.com/affiliates
-AD_MODE = os.environ.get('AD_MODE', 'affiliate').lower()
+AD_MODE = os.environ.get('AD_MODE', 'adsense').lower()
 ADSENSE_CLIENT = os.environ.get('ADSENSE_CLIENT', '')
 HUMBLE_PARTNER = os.environ.get('HUMBLE_PARTNER', '')
 
@@ -1396,6 +1398,14 @@ def profile(user_id):
     ''', (user_id,))
     return render_template('profile.html', profile_user=user, posts=posts,
                            get_category_icon=get_category_icon)
+
+@app.route('/ads.txt')
+def ads_txt():
+    client = ADSENSE_CLIENT
+    if client and client.startswith('ca-pub-'):
+        pub = client.replace('ca-pub-', 'pub-')
+        return f'google.com, {pub}, DIRECT, f08c47fec0942fa0\n', 200, {'Content-Type': 'text/plain'}
+    return 'google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0\n', 200, {'Content-Type': 'text/plain'}
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080))
