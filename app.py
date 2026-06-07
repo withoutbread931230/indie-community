@@ -1773,7 +1773,20 @@ def get_category_icon(category):
 
 @app.context_processor
 def inject_globals():
-    return dict(lang=getattr(g, 'lang', 'en'), _=lambda key: _(key, getattr(g, 'lang', 'en')), LANGUAGES=LANGUAGES, ad=AD_CONFIG)
+    lang = getattr(g, 'lang', 'en')
+    featured = query_db('''
+        SELECT p.*, u.username,
+               (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) as comment_count
+        FROM posts p JOIN users u ON p.user_id = u.id
+        WHERE p.lang = ?
+        ORDER BY p.created_at DESC LIMIT 4
+    ''', (lang,))
+    return dict(lang=lang, _=lambda key: _(key, lang), LANGUAGES=LANGUAGES, ad=AD_CONFIG,
+                featured=featured, get_category_icon=get_category_icon, top_users=query_db('''
+        SELECT u.id, u.username, COUNT(p.id) as post_count
+        FROM users u LEFT JOIN posts p ON u.id = p.user_id
+        GROUP BY u.id ORDER BY post_count DESC LIMIT 5
+    '''), categories=CATEGORIES)
 
 @app.before_request
 def load_user():
@@ -1827,23 +1840,7 @@ def index():
     offset = (page - 1) * per_page
     posts = query_db(query + where + ' ORDER BY p.created_at DESC LIMIT ? OFFSET ?',
                      params + [per_page, offset])
-    featured = query_db('''
-        SELECT p.*, u.username,
-               (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) as comment_count
-        FROM posts p JOIN users u ON p.user_id = u.id
-        WHERE p.lang = ?
-        ORDER BY p.created_at DESC LIMIT 4
-    ''', (lang,))
-    top_users = query_db('''
-        SELECT u.id, u.username, COUNT(p.id) as post_count
-        FROM users u LEFT JOIN posts p ON u.id = p.user_id
-        GROUP BY u.id ORDER BY post_count DESC LIMIT 5
-    ''')
-
-    return render_template('index.html', posts=posts, featured=featured, categories=CATEGORIES,
-                           get_category_icon=get_category_icon,
-                           selected_category=category, search=search,
-                           top_users=top_users, lang=lang, _=_,
+    return render_template('index.html', posts=posts, selected_category=category, search=search,
                            page=page, total_pages=total_pages)
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -1897,12 +1894,12 @@ def new_post():
         cover_url = request.form.get('cover_url', '').strip()
         if not title or not content:
             flash(_('flash.required_fields'))
-            return render_template('new_post.html', categories=CATEGORIES, get_category_icon=get_category_icon)
+            return render_template('new_post.html')
         query_db("INSERT INTO posts (title, content, category, cover_url, user_id, created_at, lang) VALUES (?, ?, ?, ?, ?, ?, ?)",
                  (title, content, category, cover_url, g.user['id'], now(), g.lang))
         flash(_('flash.post_created'))
         return redirect(url_for('index'))
-    return render_template('new_post.html', categories=CATEGORIES, get_category_icon=get_category_icon)
+    return render_template('new_post.html')
 
 @app.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def view_post(post_id):
@@ -1929,8 +1926,7 @@ def view_post(post_id):
         WHERE c.post_id = ? ORDER BY c.created_at ASC
     ''', (post_id,))
 
-    return render_template('post.html', post=post, comments=comments,
-                           get_category_icon=get_category_icon)
+    return render_template('post.html', post=post, comments=comments)
 
 @app.route('/profile/<int:user_id>')
 def profile(user_id):
@@ -1942,8 +1938,7 @@ def profile(user_id):
         SELECT p.*, (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) as comment_count
         FROM posts p WHERE p.user_id = ? ORDER BY p.created_at DESC
     ''', (user_id,))
-    return render_template('profile.html', profile_user=user, posts=posts,
-                           get_category_icon=get_category_icon)
+    return render_template('profile.html', profile_user=user, posts=posts)
 
 @app.route('/ads.txt')
 def ads_txt():

@@ -40,6 +40,31 @@
     {% endwith %}
 
     <div class="container">
+        {% if featured %}
+        <div class="featured-section">
+            <h2 class="featured-heading">⭐ {{ _('featured.title') }}</h2>
+            <div class="featured-grid">
+                {% for post in featured %}
+                <a href="{{ url_for('view_post', post_id=post['id']) }}" class="featured-card">
+                    <div class="featured-cover" style="background: linear-gradient(135deg, #1a3050, #0f1a2e);">
+                        {% if post['cover_url'] %}
+                            <img src="{{ post['cover_url'] }}" alt="{{ post['title'] }}" loading="lazy">
+                        {% endif %}
+                    </div>
+                    <div class="featured-body">
+                        <span class="cat-tag">{{ get_category_icon(post['category']) }} {{ post['category'] }}</span>
+                        <h3>{{ post['title'] }}</h3>
+                        <p>{{ post['content'][:120] }}...</p>
+                        <div class="meta">
+                            <span>{{ _('post.by') }} {{ post['username'] }}</span>
+                            <span>{{ post['comment_count'] }} {{ _('post.comments') }}</span>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
         {% block content %}{% endblock %}
     </div>
     <footer class="site-footer">
